@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormateurController!{% endblock %}
+
+{% block body %}
+
+    {% for formateur in formateurs %}
+        {{formateur.prenom}}<br>
+    {% endfor %}
+{% endblock %}
