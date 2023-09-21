@@ -5,6 +5,6 @@
 {% block body %}
 
     {% for formateur in formateurs %}
-        {{formateur.prenom}}<br>
+    <a href="{{path('show_formateur', {'id' : formateur.id})}}">{{formateur.prenom}}</a><br>
     {% endfor %}
 {% endblock %}

@@ -5,7 +5,7 @@
 {% block body %}
 
     {% for stagiaire in stagiaires %}
-        {{stagiaire.prenom}}<br>
+        <a href="{{path('show_stagiaire', {'id' : stagiaire.id})}}">{{stagiaire.prenom}} {{stagiaire.nom}}</a><br>
     {% endfor %}
 
 {% endblock %}

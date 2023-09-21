@@ -5,6 +5,6 @@
 {% block body %}
 
     {% for categorie in categories %}
-        {{categorie.nomCategorie}}<br>
+        <a href="{{path('show_categorie', {'id' : categorie.id})}}">{{categorie.nomCategorie}}</a><br>
     {% endfor %}
 {% endblock %}

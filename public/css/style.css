@@ -1,0 +1,19 @@
+a{
+    color: rgb(53, 53, 53);
+}
+
+nav{
+    color:rgb(53, 53, 53);
+    background: rgb(15,168,140);
+    background: linear-gradient(166deg, rgba(15,168,140,1) 0%, rgba(48,56,55,1) 100%);
+}
+
+ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+*{
+    background-color: #ffffff;
+}

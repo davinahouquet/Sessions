@@ -4,6 +4,6 @@
 
 {% block body %}
     {% for session in sessions %}
-        {{session.titre}}<br>
+        <a href="{{path('show_session', {'id' : session.id})}}">{{session.titre}}</a><br>
     {% endfor %}
 {% endblock %}
