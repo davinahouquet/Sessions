@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SessionController!{% endblock %}
+
+{% block body %}
+    {% for session in sessions %}
+        {{session.titre}}<br>
+    {% endfor %}
+{% endblock %}
