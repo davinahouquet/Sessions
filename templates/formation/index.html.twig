@@ -9,4 +9,7 @@
     <a href="{{path('show_formation', {'id' : formation.id})}}">{{formation.nomFormation}}</a><br>
     
 {% endfor %}
+
+    <a href="{{ path('new_formation') }}">Ajouter une formation</a>
+
 {% endblock %}
