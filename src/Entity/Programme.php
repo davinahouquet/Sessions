@@ -20,6 +20,9 @@ class Programme
     #[ORM\Column]
     private ?float $duree = null;
 
+    #[ORM\ManyToOne(inversedBy: 'programmes')]
+    private ?Module $module = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -48,8 +51,20 @@ class Programme
 
         return $this;
     }
-
-    public function __toString(){
-        return $this->session." ".$this->duree." jour(s)";
+    
+    public function getModule(): ?Module
+    {
+        return $this->module;
     }
+    
+    public function setModule(?Module $module): static
+    {
+        $this->module = $module;
+        
+        return $this;
+    }
+    
+        public function __toString(){
+            return $this->session." ".$this->module." ".$this->duree." jour(s)";
+        }
 }

@@ -15,4 +15,11 @@
 
     <h4>Stagiaires non inscrits :</h4><br>
 
+
+    <h5>Programme :</h5><b>
+
+        {% for programmes in session.programmes %}
+            {{programmes}}
+        {% endfor %}
+
 {% endblock %}
