@@ -3,17 +3,26 @@
 {% block title %}Fiche stagiaire{% endblock %}
 
 {% block body %}
-    <h1>Fiche stagiaire</h1>
+
+    <h1>Fiche stagiaire</h1><br>
 
     <h2>{{stagiaire.prenom}} {{stagiaire.nom}}</h2><br>
-    <p>Adresse mail : {{stagiaire.courriel}} Téléphone : {{stagiaire.telephone}}</p>
+    <p>Adresse mail : {{stagiaire.courriel}} Téléphone : {{stagiaire.telephone}}</p><br>
     
-    <h3>Session(s) auquel {{stagiaire.prenom}} {{stagiaire.nom}} est inscrit(e) :<br></h3>
+    <h3>Session(s) auquel {{stagiaire.prenom}} {{stagiaire.nom}} est inscrit(e) :</h3><br>
         
-    {% for session in sessions %}
+    {# {% for session in sessions %}
 
-        {{session.titre}}<br>
-        Nombre de places : {{session.nbPlaces}} Date de début : {{session.dateDebutFr}} Date de fin :  {{session.dateFinFr}}<br>
+        <h4>{{session.titre}}</h4>
+
+        Nombre de places : {{session.nbPlaces}}<br> Date de début : {{session.dateDebutFr}} Date de fin :  {{session.dateFinFr}}<br>
+
+    {% endfor %} #}
+
+    {% for sessions in stagiaire.sessions %}
+        
+        {{sessions.titre}}<br>
+        Nombre de places : {{sessions.nbPlaces}}<br> Date de début : {{sessions.dateDebutFr}} Date de fin :  {{sessions.dateFinFr}}<br>
 
     {% endfor %}
 
