@@ -5,7 +5,12 @@
 {% block body %}
     <h1>Fiche formateur</h1>
 
-    <h2>{{formateur.prenom}} {{formateur.nom}}</h2>
+    <h2>{{formateur.prenom}} {{formateur.nom}}</h2><br>
     
+    <h3>Sessions dont {{formateur.prenom}} {{formateur.nom}} est référent(e)</h3>
+
+    {% for sessions in formateur.sessions %}
+        <a href="{{path('show_session', {'id' : sessions.id})}}">{{sessions}}</a><br>
+    {% endfor %}
 
 {% endblock %}
