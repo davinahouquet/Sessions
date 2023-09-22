@@ -21,8 +21,8 @@
 
     {% for sessions in stagiaire.sessions %}
         
-        {{sessions.titre}}<br>
-        Nombre de places : {{sessions.nbPlaces}}<br> Date de début : {{sessions.dateDebutFr}} Date de fin :  {{sessions.dateFinFr}}<br>
+        <a href="{{path('show_session', {'id' : sessions.id})}}">{{sessions.titre}}</a><br>
+        Date de début : {{sessions.dateDebutFr}} Date de fin :  {{sessions.dateFinFr}}<br>
 
     {% endfor %}
 
