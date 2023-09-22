@@ -5,7 +5,12 @@
 {% block body %}
     <h1>Détails d'une catégorie</h1>
 
-    <h2>{{categorie.nomCategorie}}</h2>
+    <h2>{{categorie.nomCategorie}}</h2><br>
     
+    <h3>Modules </h3><br>
+
+    {% for modules in categorie.modules %}
+        <a href="{{path('show_module', {'id' : modules.id})}}">{{modules}}</a><br>
+    {% endfor %}
 
 {% endblock %}
