@@ -5,7 +5,17 @@
 {% block body %}
     <h1>Fiche stagiaire</h1>
 
-    <h2>{{stagiaire.prenom}} {{stagiaire.nom}}</h2>
+    <h2>{{stagiaire.prenom}} {{stagiaire.nom}}</h2><br>
+    <p>Adresse mail : {{stagiaire.courriel}} Téléphone : {{stagiaire.telephone}}</p>
     
+    <h3>Session(s) auquel {{stagiaire.prenom}} {{stagiaire.nom}} est inscrit(e) :<br></h3>
+        
+    {% for session in sessions %}
+
+        {{session.titre}}<br>
+        Nombre de places : {{session.nbPlaces}} Date de début : {{session.dateDebutFr}} Date de fin :  {{session.dateFinFr}}<br>
+
+    {% endfor %}
+
 
 {% endblock %}

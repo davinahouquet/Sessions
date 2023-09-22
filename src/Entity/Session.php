@@ -81,6 +81,10 @@ class Session
         return $this->dateDebut;
     }
 
+    public function getDateDebutFr(): ?string{
+        return $this->dateDebut->format("d-m-Y");
+    }
+
     public function setDateDebut(\DateTimeInterface $dateDebut): static
     {
         $this->dateDebut = $dateDebut;
@@ -91,6 +95,10 @@ class Session
     public function getDateFin(): ?\DateTimeInterface
     {
         return $this->dateFin;
+    }
+
+    public function getDateFinFr(): ?string{
+        return $this->dateFin->format("d-m-Y");
     }
 
     public function setDateFin(\DateTimeInterface $dateFin): static
