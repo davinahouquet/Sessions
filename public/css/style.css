@@ -1,3 +1,6 @@
+ @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,500&display=swap');
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -18,6 +21,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
     box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -49,12 +53,11 @@ a{
 
 nav{
     width: 100%;
-    height: 100px;
+    height: 80px;
     background: rgb(15,168,140);
     background: linear-gradient(166deg, rgba(15,168,140,1) 0%, rgba(48,56,55,1) 100%);
     display: flex;
     justify-content: center;
-    
     align-items: center;
 }
 
@@ -63,7 +66,7 @@ ul{
     display: flex;
     justify-content: space-around;
     background-color: transparent;
-    /* gap: 20px; */
+    gap: 20px;
 
 }
 
@@ -74,7 +77,7 @@ nav ul li a{
 
 nav button{
     width: 100px;
-    height: 40px;
+    height: auto;
     background: rgb(255,232,0);
     background: linear-gradient(190deg, rgba(255,232,0,1) 0%, rgba(156,124,8,1) 100%);
     border-radius: 5px;
