@@ -10,7 +10,7 @@
     <h3>Stagiaires inscrits : </h3><br>
 
     {% for stagiaires in session.stagiaires %}
-        {{stagiaires}}<br>
+        <a href="{{path('show_stagiaire', {'id' : stagiaires.id})}}">{{stagiaires}}</a><br>
     {% endfor %}<br>
 
     <h4>Stagiaires non inscrits :</h4><br>
