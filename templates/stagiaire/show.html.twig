@@ -26,5 +26,7 @@
 
     {% endfor %}
 
+    <button><a href="{{path('edit_stagiaire', {'id' : stagiaire.id})}}">Editer</a></button>
+    <button><a href="{{path('delete_stagiaire', {'id' : stagiaire.id})}}">Supprimer</a></button><br>
 
 {% endblock %}
