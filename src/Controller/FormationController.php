@@ -25,7 +25,8 @@ class FormationController extends AbstractController
     }
     
         #[Route('/formation/new', name: 'new_formation')]
-        public function new(Request $request, EntityManagerInterface $entityManager): Response
+        #[Route('/formation/new', name: 'edit_formation')]
+        public function new_edit(Request $request, EntityManagerInterface $entityManager): Response
         {
             $formation = new Formation();
         
@@ -43,7 +44,8 @@ class FormationController extends AbstractController
             }
         
             return $this->render('formation/new.html.twig', [
-                'formAddFormation' => $form
+                'formAddFormation' => $form,
+                'edit' => $formation->getId()
             ]);
         }
 
@@ -57,6 +59,15 @@ class FormationController extends AbstractController
             'formation' =>  $formation,
             'formateur' => $formateur
         ]);
+    }
+
+    #[Route('/formation/{id}/delete', name: 'delete_formation')]
+    public function delete(Formation $formation = null, EntityManagerInterface $entityManager)
+    {
+        $entityManager->remove($formation);
+        $entityManager->flush();
+            
+        return $this->redirectToRoute(('app_formation'));
     }
     
 }
