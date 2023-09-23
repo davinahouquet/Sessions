@@ -5,6 +5,10 @@
 {% block body %}
 
     {% for categorie in categories %}
-        <a href="{{path('show_categorie', {'id' : categorie.id})}}">{{categorie.nomCategorie}}</a><br>
+        <a href="{{path('show_categorie', {'id' : categorie.id})}}">{{categorie.nomCategorie}}</a>
+        <button><a href="{{path('edit_categorie', {'id' : categorie.id})}}">Editer</a></button>
+        <button><a href="{{path('delete_categorie', {'id' : categorie.id})}}">Supprimer</a></button><br>
     {% endfor %}
+    <button><a href="{{path('new_categorie')}}">Ajouter une categorie</a></button>
+
 {% endblock %}
