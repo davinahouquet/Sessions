@@ -26,7 +26,8 @@ class FormateurController extends AbstractController
     }
     
     #[Route('/formateur/new', name: 'new_formateur')]
-    public function new(Formateur $formateur = null, Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/formateur/{id}/edit', name: 'edit_formateur')]
+    public function new_edit(Formateur $formateur = null, Request $request, EntityManagerInterface $entityManager): Response
     {
         $isNew = !$formateur;
 
@@ -51,7 +52,7 @@ class FormateurController extends AbstractController
     
         return $this->render('formateur/new.html.twig', [
             'formAddFormateur' => $form,
-            'formateur' => $formateur->getId()
+            'edit' => $formateur->getId()
             ]);
         }
 
