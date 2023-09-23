@@ -4,6 +4,9 @@
 
 {% block body %}
     {% for session in sessions %}
-        <a href="{{path('show_session', {'id' : session.id})}}">{{session.titre}}</a><br>
+        <a href="{{path('show_session', {'id' : session.id})}}">{{session.titre}}</a>
+        <button><a href="{{path('edit_session', {'id' : session.id})}}">Editer</a></button>
+        <button><a href="{{path('delete_session', {'id' : session.id})}}">Supprimer</a></button><br>
     {% endfor %}
+    <button><a href="{{path('new_session')}}">Ajouter une session</a></button>
 {% endblock %}

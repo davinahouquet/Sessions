@@ -24,30 +24,30 @@ class FormationController extends AbstractController
         ]);
     }
     
-        #[Route('/formation/new', name: 'new_formation')]
-        #[Route('/formation/new', name: 'edit_formation')]
-        public function new_edit(Request $request, EntityManagerInterface $entityManager): Response
-        {
-            $formation = new Formation();
+    #[Route('/formation/new', name: 'new_formation')]
+    #[Route('/formation/{id}/new', name: 'edit_formation')]
+    public function new_edit(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $formation = new Formation();
         
-            $form = $this->createForm(FormationType::class, $formation);
+        $form = $this->createForm(FormationType::class, $formation);
             
-            $form->handleRequest($request);
-            if ($form->isSubmitted() && $form->isValid()) {
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
         
-                $formation = $form->getData();
+            $formation = $form->getData();
                 
-                $entityManager->persist($formation);
-                $entityManager->flush();
+            $entityManager->persist($formation);
+            $entityManager->flush();
         
-                return $this->redirectToRoute('app_formation');
-            }
-        
-            return $this->render('formation/new.html.twig', [
-                'formAddFormation' => $form,
-                'edit' => $formation->getId()
-            ]);
+            return $this->redirectToRoute('app_formation');
         }
+        
+        return $this->render('formation/new.html.twig', [
+            'formAddFormation' => $form,
+            'edit' => $formation->getId()
+        ]);
+    }
 
     #[Route('/formation/{id}', name: 'show_formation')]
     public function show(Formation $formation, FormateurRepository $formateurRepository): Response

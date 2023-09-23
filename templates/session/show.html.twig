@@ -3,10 +3,18 @@
 {% block title %}Détail d'une session{% endblock %}
 
 {% block body %}
+
+<button><a href="{{path('app_session')}}">Retour aux sessions</a></button>
+
     <h1>Détail d'une session</h1>
 
     <h2>{{session}}</h2><br>
     
+    <p>Date de début : {{session.dateDebutFr}}</p><br>
+    <p>Date de fin : {{session.dateFinFr}}</p><br>
+    <p>Formateur référent : {{session.formateur}}</p><br>
+    <p>Formation : {{session.formation}}</p><br>
+
     <h3>Stagiaires inscrits : </h3><br>
 
     {% for stagiaires in session.stagiaires %}
@@ -21,5 +29,8 @@
         {% for programmes in session.programmes %}
             {{programmes}}
         {% endfor %}
+        
+    <button><a href="{{path('edit_session', {'id' : session.id})}}">Editer</a></button>
+    <button><a href="{{path('delete_session', {'id' : session.id})}}">Supprimer</a></button>
 
 {% endblock %}

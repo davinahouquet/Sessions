@@ -2,20 +2,37 @@
 
 namespace App\Form;
 
-use App\Entity\Module;
+use App\Entity\Session;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class ModuleType extends AbstractType
+class SessionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nomModule', TextType::class)
-            ->add('categorie', null, [
+            ->add('titre', TextType::class)
+            ->add('nbPlaces', NumberType::class)
+            ->add('dateDebut', DateType::class)
+            ->add('dateFin', DateType::class)
+            ->add('formation', null, [
+                'required' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ]
+            ])
+            ->add('formateur', null, [
+                'required' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ]
+            ])
+            ->add('stagiaires', null, [
                 'required' => true,
                 'attr' => [
                     'autocomplete' => 'off'
@@ -25,14 +42,14 @@ class ModuleType extends AbstractType
                 'attr' => [
                     'class' => 'btn btn-success'
                 ]
-            ]);
+                ]);
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Module::class,
+            'data_class' => Session::class,
         ]);
     }
 }
