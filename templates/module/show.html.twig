@@ -6,6 +6,9 @@
     <h1>Détail d'un module</h1>
 
     <h2>{{module.nomModule}}</h2>
+    <p>{{module.categorie}}</p>
     
+    <button><a href="{{path('edit_module', {'id' : module.id})}}">Editer</a></button>
+        <button><a href="{{path('delete_module', {'id' : module.id})}}">Supprimer</a></button>
 
 {% endblock %}
