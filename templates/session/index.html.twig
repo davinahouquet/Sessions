@@ -1,8 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SessionController!{% endblock %}
+{% block title %}Session{% endblock %}
 
 {% block body %}
+
+<h1>Toutes nos sessions :</h1>
+
     {% for session in sessions %}
         <a href="{{path('show_session', {'id' : session.id})}}">{{session.titre}}</a>
 

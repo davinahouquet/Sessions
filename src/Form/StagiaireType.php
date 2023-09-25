@@ -26,7 +26,12 @@ class StagiaireType extends AbstractType
                     'F' => false,
                 ],
                 ])
-            ->add('dateNaissance',DateType::class)
+            ->add('dateNaissance',DateType::class, [
+                'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
             ->add('ville', TextType::class)
             ->add('courriel', EmailType::class)
             ->add('telephone', NumberType::class)

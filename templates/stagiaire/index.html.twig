@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello StagiaireController!{% endblock %}
+{% block title %}Stagiaires{% endblock %}
 
 {% block body %}
 
+<h1>Liste des stagiaires par ordre alphabétique :</h1>
     {% for stagiaire in stagiaires %}
         <a href="{{path('show_stagiaire', {'id' : stagiaire.id})}}">{{stagiaire.prenom}} {{stagiaire.nom}}</a>
 

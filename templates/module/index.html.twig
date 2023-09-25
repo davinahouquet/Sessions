@@ -4,6 +4,8 @@
 
 {% block body %}
 
+<h1>Modules :</h1>
+
     {% for module in modules %}
         <a href="{{path('show_module', {'id' : module.id})}}">{{module.nomModule}}</a>
 
