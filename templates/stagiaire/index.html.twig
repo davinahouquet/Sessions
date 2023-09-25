@@ -6,10 +6,16 @@
 
     {% for stagiaire in stagiaires %}
         <a href="{{path('show_stagiaire', {'id' : stagiaire.id})}}">{{stagiaire.prenom}} {{stagiaire.nom}}</a>
-        <button><a href="{{path('edit_stagiaire', {'id' : stagiaire.id})}}">Editer</a></button>
-        <button><a href="{{path('delete_stagiaire', {'id' : stagiaire.id})}}">Supprimer</a></button><br>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <button><a href="{{path('edit_stagiaire', {'id' : stagiaire.id})}}">Editer</a></button>
+            <button><a href="{{path('delete_stagiaire', {'id' : stagiaire.id})}}">Supprimer</a></button>
+        {% endif %}
+        <br>
     {% endfor %}
 
-    <button><a href="{{path('new_stagiaire')}}">Ajouter un stagiaire</a></button>
+    {% if is_granted('ROLE_ADMIN') %}
+        <button><a href="{{path('new_stagiaire')}}">Ajouter un stagiaire</a></button>   
+    {% endif %}
 
 {% endblock %}

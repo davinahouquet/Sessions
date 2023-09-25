@@ -30,7 +30,9 @@
             {{programmes}}
         {% endfor %}
         
-    <button><a href="{{path('edit_session', {'id' : session.id})}}">Editer</a></button>
-    <button><a href="{{path('delete_session', {'id' : session.id})}}">Supprimer</a></button>
+    {% if is_granted('ROLE_ADMIN') %}
+        <button><a href="{{path('edit_session', {'id' : session.id})}}">Editer</a></button>
+        <button><a href="{{path('delete_session', {'id' : session.id})}}">Supprimer</a></button>
+    {% endif %}
 
 {% endblock %}

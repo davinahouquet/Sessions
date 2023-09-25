@@ -24,8 +24,8 @@ class FormationController extends AbstractController
         ]);
     }
     
-    #[Route('/formation/new', name: 'new_formation')]
-    #[Route('/formation/{id}/new', name: 'edit_formation')]
+    #[Route('/admin/formation/new', name: 'new_formation')]
+    #[Route('/admin/formation/{id}/new', name: 'edit_formation')]
     public function new_edit(Request $request, EntityManagerInterface $entityManager): Response
     {
         $formation = new Formation();
@@ -61,7 +61,7 @@ class FormationController extends AbstractController
         ]);
     }
 
-    #[Route('/formation/{id}/delete', name: 'delete_formation')]
+    #[Route('/admin/formation/{id}/delete', name: 'delete_formation')]
     public function delete(Formation $formation = null, EntityManagerInterface $entityManager)
     {
         $entityManager->remove($formation);

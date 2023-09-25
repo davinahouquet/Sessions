@@ -25,8 +25,8 @@ class FormateurController extends AbstractController
         ]);
     }
     
-    #[Route('/formateur/new', name: 'new_formateur')]
-    #[Route('/formateur/{id}/edit', name: 'edit_formateur')]
+    #[Route('/admin/formateur/new', name: 'new_formateur')]
+    #[Route('/admin/formateur/{id}/edit', name: 'edit_formateur')]
     public function new_edit(Formateur $formateur = null, Request $request, EntityManagerInterface $entityManager): Response
     {
         $isNew = !$formateur;
@@ -64,7 +64,7 @@ class FormateurController extends AbstractController
         ]);
     }
 
-    #[Route('/formateur/{id}/delete', name: 'delete_formateur')]
+    #[Route('/admin/formateur/{id}/delete', name: 'delete_formateur')]
     public function delete(Formateur $formateur = null, EntityManagerInterface $entityManager)
     {
         $entityManager->remove($formateur);

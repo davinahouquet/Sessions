@@ -13,8 +13,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class StagiaireController extends AbstractController
 {
-    #[Route('/stagiaire/new', name: 'new_stagiaire')]
-    #[Route('/stagiaire/{id}/edit', name: 'edit_stagiaire')]
+    #[Route('/admin/stagiaire/new', name: 'new_stagiaire')]
+    #[Route('/admin/stagiaire/{id}/edit', name: 'edit_stagiaire')]
     public function new_edit(Stagiaire $stagiaire = null, Request $request, EntityManagerInterface $entityManager): Response
     {
         $isNew = !$stagiaire;
@@ -44,7 +44,7 @@ class StagiaireController extends AbstractController
             ]);
         }
 
-    #[Route('/stagiaire/{id}/delete', name: 'delete_stagiaire')]
+    #[Route('/admin/stagiaire/{id}/delete', name: 'delete_stagiaire')]
     public function delete(Stagiaire $stagiaire = null, EntityManagerInterface $entityManager)
     {
         $entityManager->remove($stagiaire);

@@ -6,9 +6,16 @@
 
     {% for module in modules %}
         <a href="{{path('show_module', {'id' : module.id})}}">{{module.nomModule}}</a>
-        <button><a href="{{path('edit_module', {'id' : module.id})}}">Editer</a></button>
-        <button><a href="{{path('delete_module', {'id' : module.id})}}">Supprimer</a></button><br>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <button><a href="{{path('edit_module', {'id' : module.id})}}">Editer</a></button>
+            <button><a href="{{path('delete_module', {'id' : module.id})}}">Supprimer</a></button>        
+        {% endif %}
+        <br>
     {% endfor %}
-    <button><a href="{{path('new_module')}}">Ajouter un module</a></button>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <button><a href="{{path('new_module')}}">Ajouter un module</a></button>
+    {% endif %}
 
 {% endblock %}

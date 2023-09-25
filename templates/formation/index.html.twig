@@ -7,11 +7,16 @@
 {% for formation in formations %}
 
     <a href="{{path('show_formation', {'id' : formation.id})}}">{{formation.nomFormation}}</a>
-    <button><a href="{{path('edit_formation', {'id' : formation.id})}}">Editer</a></button>
-    <button><a href="{{path('delete_formation', {'id' : formation.id})}}">Supprimer</a></button><br>
-    
-{% endfor %}
 
-    <a href="{{ path('new_formation') }}">Ajouter une formation</a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <button><a href="{{path('edit_formation', {'id' : formation.id})}}">Editer</a></button>
+        <button><a href="{{path('delete_formation', {'id' : formation.id})}}">Supprimer</a></button>
+    {% endif %}
+    <br>
+    {% endfor %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('new_formation') }}">Ajouter une formation</a>
+    {% endif %}
 
 {% endblock %}

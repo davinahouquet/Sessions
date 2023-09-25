@@ -24,8 +24,8 @@ class CategorieController extends AbstractController
         ]);
     }
 
-    #[Route('/categorie/new', name: 'new_categorie')]
-    #[Route('/categorie/{id}/edit', name: 'edit_categorie')]
+    #[Route('/admin/categorie/new', name: 'new_categorie')]
+    #[Route('/admin/categorie/{id}/edit', name: 'edit_categorie')]
     public function new_edit(Categorie $categorie = null, Request $request, EntityManagerInterface $entityManager): Response
     {
         $isNew = !$categorie;
@@ -63,7 +63,7 @@ class CategorieController extends AbstractController
         ]);
     }
 
-    #[Route('/categorie/{id}/delete', name: 'delete_categorie')]
+    #[Route('/admin/categorie/{id}/delete', name: 'delete_categorie')]
     public function delete(Categorie $categorie = null, EntityManagerInterface $entityManager)
     {
         $entityManager->remove($categorie);

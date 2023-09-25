@@ -6,9 +6,14 @@
 
     {% for formateur in formateurs %}
         <a href="{{path('show_formateur', {'id' : formateur.id})}}">{{formateur.prenom}}</a>
-        <button><a href="{{path('edit_formateur', {'id' : formateur.id})}}">Editer</a></button>
-        <button><a href="{{path('delete_formateur', {'id' : formateur.id})}}">Supprimer</a></button><br>
+        {% if is_granted('ROLE_ADMIN') %}
+            <button><a href="{{path('edit_formateur', {'id' : formateur.id})}}">Editer</a></button>
+            <button><a href="{{path('delete_formateur', {'id' : formateur.id})}}">Supprimer</a></button>
+        {% endif %}
+        <br>
     {% endfor %}
 
-    <button><a href="{{path('new_formateur')}}">Ajouter un formateur</a></button>
+    {% if is_granted('ROLE_ADMIN') %}
+        <button><a href="{{path('new_formateur')}}">Ajouter un formateur</a></button>
+    {% endif %}
 {% endblock %}

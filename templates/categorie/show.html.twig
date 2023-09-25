@@ -13,7 +13,9 @@
         <a href="{{path('show_module', {'id' : modules.id})}}">{{modules}}</a><br>
     {% endfor %}
 
-    <button><a href="{{path('edit_categorie', {'id' : categorie.id})}}">Editer</a></button>
-    <button><a href="{{path('delete_categorie', {'id' : categorie.id})}}">Supprimer</a></button><br>
+    {% if is_granted('ROLE_ADMIN') %}
+        <button><a href="{{path('edit_categorie', {'id' : categorie.id})}}">Editer</a></button>
+        <button><a href="{{path('delete_categorie', {'id' : categorie.id})}}">Supprimer</a></button>
+    {% endif %}
 
 {% endblock %}

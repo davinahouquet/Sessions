@@ -24,8 +24,8 @@ class ModuleController extends AbstractController
         ]);
     }
 
-    #[Route('/module/new', name: 'new_module')]
-    #[Route('/module/{id}/edit', name: 'edit_module')]
+    #[Route('/admin/module/new', name: 'new_module')]
+    #[Route('/admin/module/{id}/edit', name: 'edit_module')]
     public function new_edit(Module $module = null, Request $request, EntityManagerInterface $entityManager): Response
     {
         $isNew = !$module;
@@ -63,7 +63,7 @@ class ModuleController extends AbstractController
         ]);
     }
 
-    #[Route('/module/{id}/delete', name: 'delete_module')]
+    #[Route('/admin/module/{id}/delete', name: 'delete_module')]
     public function delete(Module $module = null, EntityManagerInterface $entityManager)
     {
         $entityManager->remove($module);

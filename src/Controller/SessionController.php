@@ -24,8 +24,8 @@ class SessionController extends AbstractController
         ]);
     }
 
-    #[Route('/session/new', name: 'new_session')]
-    #[Route('/session/{id}/edit', name: 'edit_session')]
+    #[Route('/admin/session/new', name: 'new_session')]
+    #[Route('/admin/session/{id}/edit', name: 'edit_session')]
     public function new_edit(Request $request, EntityManagerInterface $entityManager): Response
     {
         $session = new Session();
@@ -57,7 +57,7 @@ class SessionController extends AbstractController
         ]);
     }
 
-    #[Route('/session/{id}/delete', name: 'delete_session')]
+    #[Route('/admin/session/{id}/delete', name: 'delete_session')]
     public function delete(Session $session = null, EntityManagerInterface $entityManager)
     {
         $entityManager->remove($session);
