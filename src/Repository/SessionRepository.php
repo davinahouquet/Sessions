@@ -24,18 +24,42 @@ class SessionRepository extends ServiceEntityRepository
 //    /**
 //     * @return Session[] Returns an array of Session objects
 //     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('s.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   public function findSessionsAVenir(): array
+   {
+        $now = new \DateTime();
+       return $this->createQueryBuilder('s')
+           ->andWhere('s.dateDebut > :now')
+           ->setParameter('now', $now)
+           ->orderBy('s.dateDebut', 'ASC')
+           ->getQuery()
+           ->getResult()
+       ;
+   }
 
+   public function findSessionsEnCours(): array
+   {
+        $now = new \DateTime();
+       return $this->createQueryBuilder('s')
+           ->andWhere('s.dateDebut < :now')
+           ->andWhere('s.dateFin > :now')
+           ->setParameter('now', $now)
+           ->orderBy('s.dateDebut', 'ASC')
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+
+   public function findSessionsPassees(): array
+   {
+        $now = new \DateTime();
+       return $this->createQueryBuilder('s')
+           ->andWhere('s.dateFin < :now')
+           ->setParameter('now', $now)
+           ->orderBy('s.dateDebut', 'ASC')
+           ->getQuery()
+           ->getResult()
+       ;
+   }
 //    public function findOneBySomeField($value): ?Session
 //    {
 //        return $this->createQueryBuilder('s')

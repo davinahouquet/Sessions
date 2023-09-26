@@ -6,17 +6,103 @@
     <div class="container">
         <h1>Bienvenue dans notre gestionnaire de sessions de formations</h1><br>
         
-        <div class="session-container">
-            <h2>Sessions en cours :</h2>
+        <h2>Sessions en cours</h2><br>
+{# {{ dump(sessionsEnCours)}} #}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Statut</th>
+                        <th scope="col">Formation</th>
+                        <th scope="col">Session</th>
+                        <th scope="col">Date de début</th>
+                        <th scope="col">Date de fin</th>
+                        <th scope="col">Inscrits</th>
+                        <th scope="col">Dispo</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for session in sessionsEnCours %}
+                    <tr>
+                        <td></td>
+                        <td><a href="{{path('show_session', {'id' : session.id})}}">{{session.titre}}</a></td>
+                        <td><a href="">{{session.formation}}</a></td>
+                        <td>{{session.dateDebutFr}}</td>
+                        <td>{{session.dateFinFr}}</td>
+                        <td>{{ session.nbInscrits }} / {{ session.nbPlaces }}</td>
+                        <td>{{ session.nbRestants }}</td>
+                        <td><a href="{{path('edit_session', {'id' : session.id})}}"><img src="img/crayon.png" alt="crayon" width="20"></a></td>
+                        <!--<a href="https://www.flaticon.com/fr/icones-gratuites/crayon" title="crayon icônes">Crayon icônes créées par Freepik - Flaticon</a>-->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-        </div>
-        <div class="session-container">
-            <h3>Sessions à venir :</h3>
 
-        </div>
-        <div class="session-container">
-            <h4>Sessions passées :</h4>
+        <h3>Sessions à venir</h3>
+{# {{ dump(sessionsAVenir) }} #}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Statut</th>
+                        <th scope="col">Formation</th>
+                        <th scope="col">Session</th>
+                        <th scope="col">Date de début</th>
+                        <th scope="col">Date de fin</th>
+                        <th scope="col">Inscrits</th>
+                        <th scope="col">Dispo</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for session in sessionsAVenir %}
+                    <tr>
+                        <td></td>
+                        <td><a href="{{path('show_session', {'id' : session.id})}}">{{session.titre}}</a></td>
+                        <td><a href="">{{session.formation}}</a></td>
+                        <td>{{session.dateDebutFr}}</td>
+                        <td>{{session.dateFinFr}}</td>
+                        <td>{{ session.nbInscrits }} / {{ session.nbPlaces }}</td>
+                        <td>{{ session.nbRestants }}</td>
+                        <td><a href="{{path('edit_session', {'id' : session.id})}}"><img src="img/crayon.png" alt="crayon" width="20"></a></td>
+                        <!--<a href="https://www.flaticon.com/fr/icones-gratuites/crayon" title="crayon icônes">Crayon icônes créées par Freepik - Flaticon</a>-->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-        </div>
+        <h4>Sessions passées</h4>
+{# {{ dump(sessionsPassees) }} #}
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Statut</th>
+                    <th scope="col">Formation</th>
+                    <th scope="col">Session</th>
+                    <th scope="col">Date de début</th>
+                    <th scope="col">Date de fin</th>
+                    <th scope="col">Inscrits</th>
+                    <th scope="col">Dispo</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for session in sessionsPassees %}
+                <tr>
+                    <td></td>
+                    <td><a href="{{path('show_session', {'id' : session.id})}}">{{session.titre}}</a></td>
+                    <td><a href="">{{session.formation}}</a></td>
+                    <td>{{session.dateDebutFr}}</td>
+                    <td>{{session.dateFinFr}}</td>
+                    <td>{{ session.nbInscrits }} / {{ session.nbPlaces }}</td>
+                    <td>{{ session.nbRestants }}</td>
+                    <td><a href="{{path('edit_session', {'id' : session.id})}}"><img src="img/crayon.png" alt="crayon" width="20"></a></td>
+                    <!--<a href="https://www.flaticon.com/fr/icones-gratuites/crayon" title="crayon icônes">Crayon icônes créées par Freepik - Flaticon</a>-->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
     </div>
 {% endblock %}

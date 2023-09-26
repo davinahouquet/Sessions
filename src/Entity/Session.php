@@ -170,6 +170,14 @@ class Session
         return $this->stagiaires;
     }
 
+    public function getNbInscrits(){
+        return count($this->stagiaires);
+    }
+
+    public function getNbRestants(){
+        return $this->nbPlaces - $this->getNbInscrits();
+    }
+
     public function addStagiaire(Stagiaire $stagiaire): static
     {
         if (!$this->stagiaires->contains($stagiaire)) {

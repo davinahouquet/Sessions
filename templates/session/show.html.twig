@@ -4,30 +4,29 @@
 
 {% block body %}
 
-<button><a href="{{path('app_session')}}">Retour aux sessions</a></button>
+<button class="retour"><a href="{{path('app_session')}}">Retour aux sessions</a></button>
 
-    <h1>Détail de la session {{session.titre}} du {{session.dateDebutFr}}</h1>
-
-    <h2>{{session}}</h2><br>
+    <h1>Session : {{session.titre}} du {{session.dateDebutFr}}</h1><br>
     
-    <p>Date de début : {{session.dateDebutFr}}</p><br>
+    <p>Date de début : {{session.dateDebutFr}}</p>
     <p>Date de fin : {{session.dateFinFr}}</p><br>
     <p>Formateur référent : {{session.formateur}}</p><br>
     <p>Formation : {{session.formation}}</p><br>
 
-    <h3>Stagiaires inscrits : </h3><br>
+    <h3>Stagiaires inscrits </h3>
 
     {% for stagiaires in session.stagiaires %}
-        <a href="{{path('show_stagiaire', {'id' : stagiaires.id})}}">{{stagiaires}}</a><br>
+        <a href="{{path('show_stagiaire', {'id' : stagiaires.id})}}">- {{stagiaires}}</a><br>
     {% endfor %}<br>
 
-    <h4>Stagiaires non inscrits :</h4><br>
+    <h4>Stagiaires non inscrits </h4><br>
 
 
     <h5>Programme :</h5><b>
 
         {% for programmes in session.programmes %}
-            {{programmes}}
+            - {{programmes.module}}
+            {{programmes.duree}} jours
         {% endfor %}
         
     {% if is_granted('ROLE_ADMIN') %}
