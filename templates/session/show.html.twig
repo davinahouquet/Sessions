@@ -20,7 +20,10 @@
     {% endfor %}<br>
 
     <h4>Stagiaires non inscrits </h4><br>
-
+        {% for nonInscrits in session.stagiaires %}
+            {# <a href="{{path('show_stagiaire', {'id' : stagiaires.id})}}">-  {{stagiaire.nonInscrits}} </a><br> #}
+            <a href="{{path('show_stagiaire', {'id' : nonInscrits.id})}}">- {{nonInscrits}}</a><br>
+        {% endfor %}
 
     <h5>Programme :</h5><b>
 
