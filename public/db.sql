@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `formateur` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.formateur : ~5 rows (environ)
+-- Listage des données de la table sessions.formateur : ~6 rows (environ)
 INSERT INTO `formateur` (`id`, `prenom`, `nom`) VALUES
 	(1, 'Jean', 'DUPONT'),
 	(2, 'Lucie', 'PAULIN'),
@@ -67,9 +67,9 @@ CREATE TABLE IF NOT EXISTS `formation` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nom_formation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.formation : ~8 rows (environ)
+-- Listage des données de la table sessions.formation : ~16 rows (environ)
 INSERT INTO `formation` (`id`, `nom_formation`) VALUES
 	(1, 'BUREAUTIQUE'),
 	(2, 'DEV WEB'),
@@ -86,7 +86,8 @@ INSERT INTO `formation` (`id`, `nom_formation`) VALUES
 	(14, 'Kinésithérapie'),
 	(15, 'Comportementaliste animalier'),
 	(16, 'Médiation animale'),
-	(17, 'Art thérapie');
+	(17, 'Art thérapie'),
+	(18, 'Test Formation');
 
 -- Listage de la structure de table sessions. messenger_messages
 CREATE TABLE IF NOT EXISTS `messenger_messages` (
@@ -115,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `module` (
   CONSTRAINT `FK_C242628BCF5E72D` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.module : ~15 rows (environ)
+-- Listage des données de la table sessions.module : ~16 rows (environ)
 INSERT INTO `module` (`id`, `categorie_id`, `nom_module`) VALUES
 	(1, 1, 'FRONT'),
 	(2, 1, 'BACK'),
@@ -167,9 +168,9 @@ CREATE TABLE IF NOT EXISTS `session` (
   KEY `IDX_D044D5D4155D8F51` (`formateur_id`),
   CONSTRAINT `FK_D044D5D4155D8F51` FOREIGN KEY (`formateur_id`) REFERENCES `formateur` (`id`),
   CONSTRAINT `FK_D044D5D45200282E` FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.session : ~7 rows (environ)
+-- Listage des données de la table sessions.session : ~9 rows (environ)
 INSERT INTO `session` (`id`, `formation_id`, `formateur_id`, `titre`, `nb_places`, `date_debut`, `date_fin`) VALUES
 	(1, 5, 1, 'Assistant(e) en chirurgie dentaire', 15, '2023-09-21 14:30:56', '2024-09-21 14:31:00'),
 	(2, 3, 2, 'Responsable comptable', 10, '2023-10-21 14:31:25', '2024-09-21 14:31:32'),
@@ -178,7 +179,9 @@ INSERT INTO `session` (`id`, `formation_id`, `formateur_id`, `titre`, `nb_places
 	(5, 1, 2, 'Rédactrice PE', 25, '2023-10-01 13:36:09', '2024-03-22 13:36:19'),
 	(6, 5, 5, 'test', 4, '2021-01-01 00:00:00', '2022-01-01 00:00:00'),
 	(8, 1, 3, 'test update', 6, '2018-01-01 00:00:00', '2018-01-01 00:00:00'),
-	(9, 16, 3, 'Médiation animale -', 5, '2024-02-01 00:00:00', '2024-09-30 00:00:00');
+	(9, 16, 3, 'Médiation animale -', 5, '2024-02-01 00:00:00', '2024-09-30 00:00:00'),
+	(10, 1, 3, 'Test Session', 50, '2023-09-26 00:00:00', '2025-09-30 00:00:00'),
+	(11, 6, 2, 'Personal shopper', 5, '2020-01-01 00:00:00', '2020-12-12 00:00:00');
 
 -- Listage de la structure de table sessions. stagiaire
 CREATE TABLE IF NOT EXISTS `stagiaire` (
@@ -193,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `stagiaire` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.stagiaire : ~5 rows (environ)
+-- Listage des données de la table sessions.stagiaire : ~9 rows (environ)
 INSERT INTO `stagiaire` (`id`, `nom`, `prenom`, `sexe`, `date_naissance`, `ville`, `courriel`, `telephone`) VALUES
 	(1, 'MIRIN', 'Pria', 'F', '2001-09-21 14:26:28', 'Strasbourg', 'priamirin@hotmail.fr', 615698745),
 	(2, 'STEPHAN', 'Fanny', 'F', '1989-09-21 14:27:22', 'Sarreguemines', 'fannystephan@hotmail.fr', 659869472),
@@ -216,7 +219,7 @@ CREATE TABLE IF NOT EXISTS `stagiaire_session` (
   CONSTRAINT `FK_D32D02D4BBA93DD6` FOREIGN KEY (`stagiaire_id`) REFERENCES `stagiaire` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.stagiaire_session : ~6 rows (environ)
+-- Listage des données de la table sessions.stagiaire_session : ~7 rows (environ)
 INSERT INTO `stagiaire_session` (`stagiaire_id`, `session_id`) VALUES
 	(1, 1),
 	(1, 2),
@@ -230,18 +233,19 @@ INSERT INTO `stagiaire_session` (`stagiaire_id`, `session_id`) VALUES
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `pseudo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(180) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `roles` json NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.user : ~0 rows (environ)
+-- Listage des données de la table sessions.user : ~4 rows (environ)
 INSERT INTO `user` (`id`, `pseudo`, `email`, `roles`, `password`) VALUES
 	(1, '', 'test@test', '[]', '$2y$13$DeifcFPlbr50qKZh5iyW1Ol6IeNsTczthk74Ur.l5ngJvhWWws8bi'),
 	(2, '', 'test1@test1', '[]', '$2y$13$F8cvl/Htzzs64CF1u.U2ou8jYNAvAPQatgJIRTFO3am/4wqI6f5bG'),
-	(3, 'admin', 'admin@admin.fr', '["ROLE_ADMIN"]', '$2y$13$aqLC4Hs3Uj9lbxuLHl6xoOHZiX5y2BqzOzUgcU06S8wMU4VbcEnXq');
+	(3, 'admin', 'admin@admin.fr', '["ROLE_ADMIN"]', '$2y$13$aqLC4Hs3Uj9lbxuLHl6xoOHZiX5y2BqzOzUgcU06S8wMU4VbcEnXq'),
+	(4, 'admin1', 'admin@admin.com', '["ROLE_ADMIN"]', '$2y$13$1.TwhMG/274oKeWlRHJjDutCRUwWwWCMXfJmP/oVTw9QSRABw4/uq');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
