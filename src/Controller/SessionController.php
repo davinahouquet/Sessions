@@ -26,9 +26,15 @@ class SessionController extends AbstractController
 
     #[Route('/admin/session/new', name: 'new_session')]
     #[Route('/admin/session/{id}/edit', name: 'edit_session')]
-    public function new_edit(Request $request, EntityManagerInterface $entityManager): Response
+    public function new_edit(Session $session = null, Request $request, EntityManagerInterface $entityManager): Response
     {
-        $session = new Session();
+
+        $isNew = !$session;
+
+        if ($isNew) {
+
+            $session = new Session();
+        }
     
         $form = $this->createForm(SessionType::class, $session);
         
