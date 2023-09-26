@@ -26,9 +26,13 @@ class FormationController extends AbstractController
     
     #[Route('/admin/formation/new', name: 'new_formation')]
     #[Route('/admin/formation/{id}/new', name: 'edit_formation')]
-    public function new_edit(Request $request, EntityManagerInterface $entityManager): Response
+    public function new_edit(Formation $formation = null, Request $request, EntityManagerInterface $entityManager): Response
     {
-        $formation = new Formation();
+        $isNew = !$formation;
+
+        if ($isNew) {
+            $formation = new Formation();
+        }
         
         $form = $this->createForm(FormationType::class, $formation);
             
