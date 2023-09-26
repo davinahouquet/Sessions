@@ -4,20 +4,34 @@
 
 {% block body %}
 
-<h1>Liste de nos formations :</h1>
-{% for formation in formations %}
-
-    <a href="{{path('show_formation', {'id' : formation.id})}}">{{formation.nomFormation}}</a>
-
-    {% if is_granted('ROLE_ADMIN') %}
-        <button><a href="{{path('edit_formation', {'id' : formation.id})}}">Editer</a></button>
-        <button><a href="{{path('delete_formation', {'id' : formation.id})}}">Supprimer</a></button>
-    {% endif %}
-    <br>
-    {% endfor %}
-
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('new_formation') }}">Ajouter une formation</a>
-    {% endif %}
+<div class="container">
+    <h1>Liste de nos formations :</h1><br>
+    
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom de la formation</th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <th colspan="2">Actions</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for formation in formations %}
+                    <tr>
+                        <td><a href="{{path('show_formation', {'id' : formation.id})}}">{{formation.nomFormation}}</a></td>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <td><a href="{{path('edit_formation', {'id' : formation.id})}}">Editer</a></td>
+                            <td><a href="{{path('delete_formation', {'id' : formation.id})}}">Supprimer</a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('new_formation') }}">Ajouter une formation</a>
+        {% endif %}
+</div>
 
 {% endblock %}

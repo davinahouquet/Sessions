@@ -3,21 +3,33 @@
 {% block title %}Session{% endblock %}
 
 {% block body %}
-
-<h1>Toutes nos sessions :</h1>
-
-    {% for session in sessions %}
-        <a href="{{path('show_session', {'id' : session.id})}}">{{session.titre}}</a>
-
-        {% if is_granted('ROLE_ADMIN') %}
-            <button><a href="{{path('edit_session', {'id' : session.id})}}">Editer</a></button>
-            <button><a href="{{path('delete_session', {'id' : session.id})}}">Supprimer</a></button>
-        {% endif %}
-        <br>
-    {% endfor %}
-
-    {% if is_granted('ROLE_ADMIN') %}
-        <button><a href="{{path('new_session')}}">Ajouter une session</a></button>
-    {% endif %}
-    
+    <div class="container">
+        <h1>Toutes nos sessions :</h1>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Titre de la session</th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <th colspan="2">Actions</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for session in sessions %}
+                <tr>
+                    <td><a href="{{path('show_session', {'id' : session.id})}}">{{session.titre}}</a></td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <td><a href="{{path('edit_session', {'id' : session.id})}}">Editer</a></td>
+                        <td><a href="{{path('delete_session', {'id' : session.id})}}">Supprimer</a></td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+                
+            {% if is_granted('ROLE_ADMIN') %}
+                <button><a href="{{path('new_session')}}">Ajouter une session</a></button>
+            {% endif %}
+    </div>
 {% endblock %}

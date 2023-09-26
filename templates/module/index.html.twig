@@ -3,21 +3,35 @@
 {% block title %}Hello ModuleController!{% endblock %}
 
 {% block body %}
+    <div class="container">
+        <h1>Modules :</h1>
 
-<h1>Modules :</h1>
-
-    {% for module in modules %}
-        <a href="{{path('show_module', {'id' : module.id})}}">{{module.nomModule}}</a>
-
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom du module</th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <th>Actions</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for module in modules %}
+                <tr>
+                    <td><a href="{{path('show_module', {'id' : module.id})}}">{{module.nomModule}}</a></td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <td><a href="{{path('edit_module', {'id' : module.id})}}">Editer</a></td>
+                        <td><a href="{{path('delete_module', {'id' : module.id})}}">Supprimer</a></td>        
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
         {% if is_granted('ROLE_ADMIN') %}
-            <button><a href="{{path('edit_module', {'id' : module.id})}}">Editer</a></button>
-            <button><a href="{{path('delete_module', {'id' : module.id})}}">Supprimer</a></button>        
+            <button><a href="{{path('new_module')}}">Ajouter un module</a></button>
         {% endif %}
-        <br>
-    {% endfor %}
 
-    {% if is_granted('ROLE_ADMIN') %}
-        <button><a href="{{path('new_module')}}">Ajouter un module</a></button>
-    {% endif %}
+    </div>
 
 {% endblock %}

@@ -3,20 +3,36 @@
 {% block title %}Stagiaires{% endblock %}
 
 {% block body %}
-
-<h1>Liste des stagiaires par ordre alphabétique :</h1>
-    {% for stagiaire in stagiaires %}
-        <a href="{{path('show_stagiaire', {'id' : stagiaire.id})}}">{{stagiaire.prenom}} {{stagiaire.nom}}</a>
-
+    <div class="container">
+        <h1>Liste des stagiaires :</h1>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Prenom</th>
+                    <th>Nom</th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <th colspan="2">Actions</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for stagiaire in stagiaires %}
+                <tr>
+                    <td><a href="{{path('show_stagiaire', {'id' : stagiaire.id})}}">{{stagiaire.prenom}}</td>
+                    <td><a href="{{path('show_stagiaire', {'id' : stagiaire.id})}}">{{stagiaire.nom}}</a></td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <td><a href="{{path('edit_stagiaire', {'id' : stagiaire.id})}}">Editer</a></td>
+                        <td><a href="{{path('delete_stagiaire', {'id' : stagiaire.id})}}"></a></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
         {% if is_granted('ROLE_ADMIN') %}
-            <button><a href="{{path('edit_stagiaire', {'id' : stagiaire.id})}}">Editer</a></button>
-            <button><a href="{{path('delete_stagiaire', {'id' : stagiaire.id})}}">Supprimer</a></button>
+            <button><a href="{{path('new_stagiaire')}}">Ajouter un stagiaire</a></button>   
         {% endif %}
-        <br>
-    {% endfor %}
+    </div>
 
-    {% if is_granted('ROLE_ADMIN') %}
-        <button><a href="{{path('new_stagiaire')}}">Ajouter un stagiaire</a></button>   
-    {% endif %}
 
 {% endblock %}

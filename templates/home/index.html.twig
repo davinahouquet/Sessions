@@ -18,7 +18,9 @@
                         <th scope="col">Date de fin</th>
                         <th scope="col">Inscrits</th>
                         <th scope="col">Dispo</th>
-                        <th scope="col">Actions</th>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <th scope="col">Actions</th>
+                        {% endif %}
                     </tr>
                 </thead>
                 <tbody>
@@ -31,8 +33,10 @@
                         <td>{{session.dateFinFr}}</td>
                         <td>{{ session.nbInscrits }} / {{ session.nbPlaces }}</td>
                         <td>{{ session.nbRestants }}</td>
-                        <td><a href="{{path('edit_session', {'id' : session.id})}}"><img src="img/crayon.png" alt="crayon" width="20"></a></td>
-                        <!--<a href="https://www.flaticon.com/fr/icones-gratuites/crayon" title="crayon icônes">Crayon icônes créées par Freepik - Flaticon</a>-->
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <td><a href="{{path('edit_session', {'id' : session.id})}}"><img src="img/crayon.png" alt="crayon" width="20"></a></td>
+                            <!--<a href="https://www.flaticon.com/fr/icones-gratuites/crayon" title="crayon icônes">Crayon icônes créées par Freepik - Flaticon</a>-->
+                        {% endif %}
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -51,7 +55,9 @@
                         <th scope="col">Date de fin</th>
                         <th scope="col">Inscrits</th>
                         <th scope="col">Dispo</th>
-                        <th scope="col">Actions</th>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <th scope="col">Actions</th>
+                        {% endif %}
                     </tr>
                 </thead>
                 <tbody>
@@ -64,8 +70,10 @@
                         <td>{{session.dateFinFr}}</td>
                         <td>{{ session.nbInscrits }} / {{ session.nbPlaces }}</td>
                         <td>{{ session.nbRestants }}</td>
-                        <td><a href="{{path('edit_session', {'id' : session.id})}}"><img src="img/crayon.png" alt="crayon" width="20"></a></td>
-                        <!--<a href="https://www.flaticon.com/fr/icones-gratuites/crayon" title="crayon icônes">Crayon icônes créées par Freepik - Flaticon</a>-->
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <td><a href="{{path('edit_session', {'id' : session.id})}}"><img src="img/crayon.png" alt="crayon" width="20"></a></td>
+                            <!--<a href="https://www.flaticon.com/fr/icones-gratuites/crayon" title="crayon icônes">Crayon icônes créées par Freepik - Flaticon</a>-->
+                        {% endif %}
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -84,7 +92,9 @@
                     <th scope="col">Date de fin</th>
                     <th scope="col">Inscrits</th>
                     <th scope="col">Dispo</th>
-                    <th scope="col">Actions</th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                            <th scope="col">Actions</th>
+                        {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -97,8 +107,10 @@
                     <td>{{session.dateFinFr}}</td>
                     <td>{{ session.nbInscrits }} / {{ session.nbPlaces }}</td>
                     <td>{{ session.nbRestants }}</td>
-                    <td><a href="{{path('edit_session', {'id' : session.id})}}"><img src="img/crayon.png" alt="crayon" width="20"></a></td>
-                    <!--<a href="https://www.flaticon.com/fr/icones-gratuites/crayon" title="crayon icônes">Crayon icônes créées par Freepik - Flaticon</a>-->
+                    {% if is_granted('ROLE_ADMIN') %}
+                            <td><a href="{{path('edit_session', {'id' : session.id})}}"><img src="img/crayon.png" alt="crayon" width="20"></a></td>
+                            <!--<a href="https://www.flaticon.com/fr/icones-gratuites/crayon" title="crayon icônes">Crayon icônes créées par Freepik - Flaticon</a>-->
+                        {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>

@@ -4,18 +4,35 @@
 
 {% block body %}
 
-<h1>Liste de nos formteurs :</h1>
+    <div class="container">
+        <h1>Liste de nos formteurs :</h1>
 
-    {% for formateur in formateurs %}
-        <a href="{{path('show_formateur', {'id' : formateur.id})}}">{{formateur.prenom}}</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Prenom Nom</th>
+                    <th>Nom</th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <th colspan="2">Actions</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for formateur in formateurs %}
+                    <td><a href="{{path('show_formateur', {'id' : formateur.id})}}">{{formateur.prenom}}</a></td>
+                    <td><a href="{{path('show_formateur', {'id' : formateur.id})}}">{{formateur.nom}}</a></td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <td><a href="{{path('edit_formateur', {'id' : formateur.id})}}">Editer</a></td>
+                    <td><a href="{{path('delete_formateur', {'id' : formateur.id})}}">Supprimer</a></td>
+                {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
         {% if is_granted('ROLE_ADMIN') %}
-            <button><a href="{{path('edit_formateur', {'id' : formateur.id})}}">Editer</a></button>
-            <button><a href="{{path('delete_formateur', {'id' : formateur.id})}}">Supprimer</a></button>
+            <button><a href="{{path('new_formateur')}}">Ajouter un formateur</a></button>
         {% endif %}
-        <br>
-    {% endfor %}
+    </div>
 
-    {% if is_granted('ROLE_ADMIN') %}
-        <button><a href="{{path('new_formateur')}}">Ajouter un formateur</a></button>
-    {% endif %}
 {% endblock %}
