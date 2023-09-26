@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Session;
+use App\Entity\Stagiaire;
 use App\Form\SessionType;
 use App\Repository\SessionRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -77,6 +78,14 @@ class SessionController extends AbstractController
         return $this->redirectToRoute(('app_session'));
     }
 
+    #[Route('/admin/session/{stagiaire}/{session}', name: 'add_stagiaire')]
+    public function addStagiaire(Stagiaire $stagiaireRepository, Session $sessionRepository, EntityManagerInterface $entityManager)
+    {
+        
+        $sessionRepository->addStagiaire($stagiaire);
+        $sessionRepository->flush();
 
+        return $this->redirectToRoute(('app_session'));
+    }
 
 }

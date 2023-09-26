@@ -4,38 +4,94 @@
 
 {% block body %}
 
-<button class="retour"><a href="{{path('app_session')}}">Retour aux sessions</a></button>
-
-    {% if is_granted('ROLE_ADMIN') %}
-        <button><a href="{{path('edit_session', {'id' : session.id})}}">Editer</a></button>
-        <button><a href="{{path('delete_session', {'id' : session.id})}}">Supprimer</a></button>
-    {% endif %}
-
-    <h1>Session : {{session.titre}} du {{session.dateDebutFr}}</h1><br>
+    <div class="container">
+        <button class="retour"><a href="{{path('app_session')}}">Retour aux sessions</a></button>
     
-    <p>Date de début : {{session.dateDebutFr}}</p>
-    <p>Date de fin : {{session.dateFinFr}}</p><br>
-    <p>Formateur référent : {{session.formateur}}</p><br>
-    <p>Formation : {{session.formation}}</p><br>
+        {% if is_granted('ROLE_ADMIN') %}
+            <button><a href="{{path('edit_session', {'id' : session.id})}}">Editer</a></button>
+            <button><a href="{{path('delete_session', {'id' : session.id})}}">Supprimer</a></button>
+        {% endif %}
+    
+        <h1>Session : {{session.titre}} du {{session.dateDebutFr}}</h1><br>
+        
+        <table class="table table-striped table-danger">
+            <thead>
+                <tr>
+                    <th>Formateur référent</th>
+                    <th>Formation</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{session.formateur}}</td>
+                    <td>{{session.formation}}</td>
+                    <td>{{session.dateDebutFr}}</td>
+                    <td>{{session.dateFinFr}}</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <h3>Stagiaires inscrits </h3>
+        <h5>Programme :</h5><b>
 
-    {% for stagiaires in session.stagiaires %}
-        <a href="{{path('show_stagiaire', {'id' : stagiaires.id})}}">- {{stagiaires}}</a><br>
-    {% endfor %}<br>
+            <table class="table table-striped table-info">
+                <thead>
+                    <tr>
+                        <th>Nom du module</th>
+                        <th>Nombre de jours</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for programmes in session.programmes %}
+                    <tr>
+                        <td>{{programmes.module}}</td>
+                        <td>{{programmes.duree}} jours</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    
+        <h3>Stagiaires inscrits </h3>
+    
+        <table class="table table-striped table-warning">
+            <thead>
+                <tr>
+                    <th>Prenom Nom</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stagiaires in session.stagiaires %}
+                <tr>
+                    <td><a href="{{path('show_stagiaire', {'id' : stagiaires.id})}}"> • {{stagiaires}}</a></td>
+                </tr>
+                {% endfor %}<br>
+            </tbody>
+        </table>
+    
+        <h4>Stagiaires non inscrits </h4><br>
 
-    <h4>Stagiaires non inscrits </h4><br>
-        {% for stagiaire in nonInscrits %}
-            {# <a href="{{path('show_stagiaire', {'id' : stagiaires.id})}}">-  {{stagiaire.nonInscrits}} </a><br> #}
-            <a href="{{path('show_stagiaire', {'id' : stagiaire.id})}}">- {{stagiaire}}</a><br>
-            {# {{dump(nonInscrits)}} #}
-        {% endfor %}
-
-    <h5>Programme :</h5><b>
-
-        {% for programmes in session.programmes %}
-            - {{programmes.module}}
-            {{programmes.duree}} jours
-        {% endfor %}
-
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Prenom Nom</th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <th>Ajouter à la session</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for stagiaire in nonInscrits %}
+                <tr>
+                    <td> <a href="{{path('show_stagiaire', {'id' : stagiaire.id})}}"> • {{stagiaire}}</a></td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        {# <td><a href="{{path('add_stagiaire', {'id' : stagiaire.id})}}">+</a></td> #}
+                        <td><a href="">+</a></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+            
+    </div>
 {% endblock %}

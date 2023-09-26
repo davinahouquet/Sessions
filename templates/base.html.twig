@@ -23,8 +23,8 @@
                 <li><a href="{{path('app_module')}}">MODULES</a></li>
 
                 {% if app.user %}
+                <li><a href="">Mon profil</a></li>
                     <li><a href="{{path('app_logout')}}">Se déconnecter</a></li>
-                    <li><a href="">Mon profil</a></li>
                 {% else %}   
                     <li><a href="{{path('app_register')}}">S'inscrire</a></li>
                     <li><a href="{{path('app_login')}}">Se connecter</a></li>
