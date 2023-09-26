@@ -121,3 +121,11 @@ h1{
     background-size: cover;
     z-index: -1; /* Place l'image en arrière-plan */
 }
+
+.retour{
+    margin-bottom: 20px;
+    border: none;
+    color: white;
+    background-color: #979797;
+    border-radius: 5px;
+}
