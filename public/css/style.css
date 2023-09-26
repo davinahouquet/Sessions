@@ -49,6 +49,14 @@ table {
 
 a{
     color: rgb(53, 53, 53);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+a:hover{
+    color: rgb(242,62,110);
+    text-decoration: none;
+    transition: 0.2s;
 }
 
 nav{

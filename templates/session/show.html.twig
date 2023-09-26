@@ -6,6 +6,11 @@
 
 <button class="retour"><a href="{{path('app_session')}}">Retour aux sessions</a></button>
 
+    {% if is_granted('ROLE_ADMIN') %}
+        <button><a href="{{path('edit_session', {'id' : session.id})}}">Editer</a></button>
+        <button><a href="{{path('delete_session', {'id' : session.id})}}">Supprimer</a></button>
+    {% endif %}
+
     <h1>Session : {{session.titre}} du {{session.dateDebutFr}}</h1><br>
     
     <p>Date de début : {{session.dateDebutFr}}</p>
@@ -20,9 +25,10 @@
     {% endfor %}<br>
 
     <h4>Stagiaires non inscrits </h4><br>
-        {% for nonInscrits in session.stagiaires %}
+        {% for stagiaire in nonInscrits %}
             {# <a href="{{path('show_stagiaire', {'id' : stagiaires.id})}}">-  {{stagiaire.nonInscrits}} </a><br> #}
-            <a href="{{path('show_stagiaire', {'id' : nonInscrits.id})}}">- {{nonInscrits}}</a><br>
+            <a href="{{path('show_stagiaire', {'id' : stagiaire.id})}}">- {{stagiaire}}</a><br>
+            {# {{dump(nonInscrits)}} #}
         {% endfor %}
 
     <h5>Programme :</h5><b>
@@ -31,10 +37,5 @@
             - {{programmes.module}}
             {{programmes.duree}} jours
         {% endfor %}
-        
-    {% if is_granted('ROLE_ADMIN') %}
-        <button><a href="{{path('edit_session', {'id' : session.id})}}">Editer</a></button>
-        <button><a href="{{path('delete_session', {'id' : session.id})}}">Supprimer</a></button>
-    {% endif %}
 
 {% endblock %}
