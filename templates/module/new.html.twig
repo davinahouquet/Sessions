@@ -3,13 +3,14 @@
 {% block title %}Ajouter un module{% endblock %}
 
 {% block body %}
-
-    {{ form_start(formAddModule) }}
-
-        {{ form_row(formAddModule.nomModule)}}   
-        {{ form_row(formAddModule.categorie)}}   
-        {{ form_row(formAddModule.valider)}}
-
-    {{ form_end(formAddModule) }}
+    <div class="container">
+        {{ form_start(formAddModule) }}
+    
+            {{ form_row(formAddModule.nomModule)}}   
+            {{ form_row(formAddModule.categorie)}}   
+            {{ form_row(formAddModule.valider)}}
+    
+        {{ form_end(formAddModule) }}
+    </div>
 
 {% endblock %}

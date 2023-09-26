@@ -3,17 +3,18 @@
 {% block title %}Ajouter une session{% endblock %}
 
 {% block body %}
-
-    {{ form_start(formAddSession) }}
-
-        {{ form_row(formAddSession.titre)}}   
-        {{ form_row(formAddSession.nbPlaces)}}   
-        {{ form_row(formAddSession.dateDebut)}}   
-        {{ form_row(formAddSession.dateFin)}}   
-        {{ form_row(formAddSession.formation)}}   
-        {{ form_row(formAddSession.formateur)}}   
-        {{ form_row(formAddSession.valider)}}
-
-    {{ form_end(formAddSession) }}
+    <div class="container">
+        {{ form_start(formAddSession) }}
+    
+            {{ form_row(formAddSession.titre)}}   
+            {{ form_row(formAddSession.nbPlaces)}}   
+            {{ form_row(formAddSession.dateDebut)}}   
+            {{ form_row(formAddSession.dateFin)}}   
+            {{ form_row(formAddSession.formation)}}   
+            {{ form_row(formAddSession.formateur)}}   
+            {{ form_row(formAddSession.valider)}}
+    
+        {{ form_end(formAddSession) }}
+    </div>
 
 {% endblock %}

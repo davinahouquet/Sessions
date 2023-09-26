@@ -3,12 +3,13 @@
 {% block title %}Ajouter une catégorie{% endblock %}
 
 {% block body %}
-
-    {{ form_start(formAddCategorie) }}
-
-        {{ form_row(formAddCategorie.nomCategorie)}}   
-        {{ form_row(formAddCategorie.valider)}}
-
-    {{ form_end(formAddCategorie) }}
+    <div class="container">
+        {{ form_start(formAddCategorie) }}
+    
+            {{ form_row(formAddCategorie.nomCategorie)}}   
+            {{ form_row(formAddCategorie.valider)}}
+    
+        {{ form_end(formAddCategorie) }}
+    </div>
 
 {% endblock %}
