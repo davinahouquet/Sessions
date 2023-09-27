@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Module;
 use App\Entity\Session;
 use App\Entity\Stagiaire;
 use App\Form\SessionType;
@@ -25,6 +26,7 @@ class SessionController extends AbstractController
         ]);
     }
 
+    // Créer et modifier une session
     #[Route('/admin/session/new', name: 'new_session')]
     #[Route('/admin/session/{id}/edit', name: 'edit_session')]
     public function new_edit(Session $session = null, Request $request, EntityManagerInterface $entityManager): Response
@@ -56,19 +58,22 @@ class SessionController extends AbstractController
         ]);
     }
 
+    // Afficher les détails d'une session, les stagaires non inscrits et les modules non programmés
     #[Route('/session/{id}', name: 'show_session')]
     public function show(Session $session, SessionRepository $sr): Response
     {
         $session_id = $session->getId();
         $nonInscrits = $sr->findNonInscrits($session_id);
-        // $nonProgrammes = $sr->findNonProgrammes($session_id);
+        $nonProgrammes = $sr->findNonProgrammes($session_id);
 
         return $this->render('session/show.html.twig', [
             'session' =>  $session,
-            'nonInscrits' => $nonInscrits
+            'nonInscrits' => $nonInscrits,
+            'nonProgrammes' => $nonProgrammes
         ]);
     }
 
+    // Supprimer une session
     #[Route('/admin/session/{id}/delete', name: 'delete_session')]
     public function delete(Session $session = null, EntityManagerInterface $entityManager)
     {
@@ -78,6 +83,7 @@ class SessionController extends AbstractController
         return $this->redirectToRoute(('app_session'));
     }
 
+    // Ajouter un stagiaire à une session
     #[Route('/admin/session/{id}/{session}/add', name: 'add_stagiaire')]
     public function addStagiaire(Stagiaire $stagiaire, Session $session, EntityManagerInterface $entityManager)
     {
@@ -91,6 +97,7 @@ class SessionController extends AbstractController
         return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
     }
 
+    // Supprimer un stagiaire d'une session
     #[Route('/admin/session/{id}/{session}/remove', name: 'remove_stagiaire')]
     public function removeStagiaire(Stagiaire $stagiaire, Session $session, EntityManagerInterface $entityManager)
     {
@@ -103,4 +110,27 @@ class SessionController extends AbstractController
 
         return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
     }
+
+    // Ajouter un programme dans le détail d'une session
+    #[Route('/admin/session/{id}/{session}/add', name: 'add_programme')]
+    public function addProgramme(Programme $programme, Session $session, EntityManagerInterface $entityManager)
+    {
+    
+        $session->addProgramme($programme);
+        
+        $entityManager->persist($programme);
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
+    }
+
+    // Retirer un module d'un programme dans le détail d'une session 
+    // #[Route('/admin/session/{id}/{session}/remove', name: 'remove_module')]
+    // public function removeModule(Module $module, Session $session, EntityManagerInterface $entityManager)
+    // {
+
+    // }
+
+
 }
