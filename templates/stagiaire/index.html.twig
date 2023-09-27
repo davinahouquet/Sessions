@@ -4,11 +4,11 @@
 
 {% block body %}
     <div class="container">
-        <h1>Liste des stagiaires :</h1>
+        <h1>Liste des stagiaires :</h1><br>
         
-        <table class="table table-striped">
+        <table class="table table-striped table-info">
             <thead>
-                <tr>
+                <tr class="table-active">
                     <th>Prenom</th>
                     <th>Nom</th>
                     {% if is_granted('ROLE_ADMIN') %}
@@ -30,7 +30,7 @@
             </tbody>
         </table>
         {% if is_granted('ROLE_ADMIN') %}
-            <button><a href="{{path('new_stagiaire')}}">Ajouter un stagiaire</a></button>   
+            <button type="button" class="btn btn-outline-info"><a href="{{path('new_stagiaire')}}">Ajouter un stagiaire</a></button>   
         {% endif %}
     </div>
 

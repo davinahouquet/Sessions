@@ -9,12 +9,12 @@
 
         <table class="table table-striped table-danger">
             <thead>
-                <tr>
+                <tr class="table-active">
                     <th>Session</th>
                     <th>Module</th>
                     <th>Duree</th>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <th colspan="2">Actions</th>
+                        <th colspan="3">Actions</th>
                     {% endif %}
                 </tr>
             </thead>
@@ -33,7 +33,7 @@
             </tbody>
         </table>
 
-        <a href="{{path('new_programme')}}">Ajouter un programme</a>
+        <button type="button" class="btn btn-outline-danger"><a href="{{path('new_programme')}}">Ajouter un programme</a></button>
 
     </div>
 

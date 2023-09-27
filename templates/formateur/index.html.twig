@@ -5,11 +5,11 @@
 {% block body %}
 
     <div class="container">
-        <h1>Liste de nos formteurs :</h1>
+        <h1>Liste de nos formteurs :</h1><br>
 
-        <table class="table table-striped">
+        <table class="table table-striped table-danger">
             <thead>
-                <tr>
+                <tr class="table-active">
                     <th>Prenom Nom</th>
                     <th>Nom</th>
                     {% if is_granted('ROLE_ADMIN') %}
@@ -31,7 +31,7 @@
             </tbody>
         </table>
         {% if is_granted('ROLE_ADMIN') %}
-            <button><a href="{{path('new_formateur')}}">Ajouter un formateur</a></button>
+            <button type="button" class="btn btn-outline-danger"><a href="{{path('new_formateur')}}">Ajouter un formateur</a></button>
         {% endif %}
     </div>
 

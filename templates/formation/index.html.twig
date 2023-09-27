@@ -9,7 +9,7 @@
     
         <table class="table table-striped">
             <thead>
-                <tr>
+                <tr class="table-active">
                     <th>Nom de la formation</th>
                     {% if is_granted('ROLE_ADMIN') %}
                         <th colspan="2">Actions</th>
@@ -30,7 +30,7 @@
         </table>
     
         {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('new_formation') }}">Ajouter une formation</a>
+            <button type="button" class="btn btn-outline-secondary"><a href="{{ path('new_formation') }}">Ajouter une formation</a></button>
         {% endif %}
 </div>
 

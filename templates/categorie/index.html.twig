@@ -5,11 +5,11 @@
 {% block body %}
 
     <div class="container">
-        <h1>Catégories :</h1>
+        <h1>Catégories :</h1><br>
 
         <table class="table table-striped">
             <thead>
-                <tr>
+                <tr class="table-active">
                     <th>Nom de la catégorie</th>
                     {% if is_granted('ROLE_ADMIN') %}
                         <th colspan="2">Actions</th>

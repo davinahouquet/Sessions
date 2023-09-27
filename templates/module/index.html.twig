@@ -4,11 +4,11 @@
 
 {% block body %}
     <div class="container">
-        <h1>Modules :</h1>
+        <h1>Modules :</h1><br>
 
         <table class="table table-striped">
             <thead>
-                <tr>
+                <tr class="table-active">
                     <th>Nom du module</th>
                     {% if is_granted('ROLE_ADMIN') %}
                     <th>Actions</th>
@@ -29,7 +29,7 @@
         </table>
         
         {% if is_granted('ROLE_ADMIN') %}
-            <button><a href="{{path('new_module')}}">Ajouter un module</a></button>
+            <button type="button" class="btn btn-outline-secondary"><a href="{{path('new_module')}}">Ajouter un module</a></button>
         {% endif %}
 
     </div>

@@ -33,13 +33,14 @@
             </tbody>
         </table>
 
-        <h5>Programme :</h5><b>
+        <h5>Programme :</h5><br>
 
             <table class="table table-striped table-info">
                 <thead>
                     <tr>
                         <th>Nom du module</th>
                         <th>Nombre de jours</th>
+                        <th>Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,11 +48,14 @@
                     <tr>
                         <td>{{programmes.module}}</td>
                         <td>{{programmes.duree}} jours</td>
+                        <td>X</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
     
+            <p>ICI afficher les modules non programmés (par catégorie?) avec possibilité de les rajouter au programme</p>
+
         <h3>Stagiaires inscrits </h3>
     
         <table class="table table-striped table-warning">
