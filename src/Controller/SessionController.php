@@ -78,14 +78,17 @@ class SessionController extends AbstractController
         return $this->redirectToRoute(('app_session'));
     }
 
-    #[Route('/admin/session/{stagiaire}/{session}', name: 'add_stagiaire')]
-    public function addStagiaire(Stagiaire $stagiaireRepository, Session $sessionRepository, EntityManagerInterface $entityManager)
+    #[Route('/admin/session/{id}/{session}/add', name: 'add_stagiaire')]
+    public function addStagiaire(Stagiaire $stagiaire, Session $session, EntityManagerInterface $entityManager)
     {
+    
+        $session->addStagiaire($stagiaire);
         
-        $sessionRepository->addStagiaire($stagiaire);
-        $sessionRepository->flush();
+        $entityManager->persist($stagiaire);
 
-        return $this->redirectToRoute(('app_session'));
+        $entityManager->flush();
+
+        return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
     }
 
 }

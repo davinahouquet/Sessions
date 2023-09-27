@@ -25,7 +25,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{session.formateur}}</td>
+                    <td><a href="">{{session.formateur}}</a></td>
                     <td>{{session.formation}}</td>
                     <td>{{session.dateDebutFr}}</td>
                     <td>{{session.dateFinFr}}</td>
@@ -85,8 +85,8 @@
                 <tr>
                     <td> <a href="{{path('show_stagiaire', {'id' : stagiaire.id})}}"> • {{stagiaire}}</a></td>
                     {% if is_granted('ROLE_ADMIN') %}
-                        {# <td><a href="{{path('add_stagiaire', {'id' : stagiaire.id})}}">+</a></td> #}
-                        <td><a href="">+</a></td>
+                    {# <td><a href="">+</a></td> #}
+                        <td><a href="{{path('add_stagiaire',{'id' : stagiaire.id, 'session' : session.id})}}">+</a></td>
                     {% endif %}
                 </tr>
                 {% endfor %}

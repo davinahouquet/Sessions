@@ -12,8 +12,8 @@
                 <thead>
                     <tr>
                         <th scope="col">Statut</th>
-                        <th scope="col">Formation</th>
                         <th scope="col">Session</th>
+                        <th scope="col">Formation</th>
                         <th scope="col">Date de début</th>
                         <th scope="col">Date de fin</th>
                         <th scope="col">Inscrits</th>
@@ -49,8 +49,8 @@
                 <thead>
                     <tr>
                         <th scope="col">Statut</th>
-                        <th scope="col">Formation</th>
                         <th scope="col">Session</th>
+                        <th scope="col">Formation</th>
                         <th scope="col">Date de début</th>
                         <th scope="col">Date de fin</th>
                         <th scope="col">Inscrits</th>
@@ -64,8 +64,8 @@
                     {% for session in sessionsAVenir %}
                     <tr>
                         <td></td>
-                        <td><a href="{{path('show_session', {'id' : session.id})}}">{{session.titre}}</a></td>
-                        <td><a href="">{{session.formation}}</a></td>
+                        <td><a href="">{{session.titre}}</a></td>
+                        <td><a href="{{path('show_session', {'id' : session.id})}}">{{session.formation}}</a></td>
                         <td>{{session.dateDebutFr}}</td>
                         <td>{{session.dateFinFr}}</td>
                         <td>{{ session.nbInscrits }} / {{ session.nbPlaces }}</td>
@@ -86,8 +86,8 @@
             <thead>
                 <tr>
                     <th scope="col">Statut</th>
-                    <th scope="col">Formation</th>
                     <th scope="col">Session</th>
+                    <th scope="col">Formation</th>
                     <th scope="col">Date de début</th>
                     <th scope="col">Date de fin</th>
                     <th scope="col">Inscrits</th>
