@@ -53,7 +53,7 @@ class ModuleController extends AbstractController
             'formAddModule' => $form,
             'edit' => $module->getId()
             ]);
-        }
+    }
 
     #[Route('/module/{id}', name: 'show_module')]
     public function show(Module $module): Response

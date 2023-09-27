@@ -1,0 +1,19 @@
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Détail d'un programme{% endblock %}
+
+{% block body %}
+    <h1>Détail d'un programme</h1>
+
+    <h2>{{programme}}</h2>
+   
+    {% for programme in programmes %}
+        {{programme}}
+    {% endfor %} #}
+    
+    {# {% if is_granted('ROLE_ADMIN') %}
+        <button><a href="{{path('edit_programme', {'id' : programme.id})}}">Editer</a></button>
+        <button><a href="{{path('delete_programme', {'id' : programme.id})}}">Supprimer</a></button>
+    {% endif %} #}
+
+{# {% endblock %} #}
