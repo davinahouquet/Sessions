@@ -19,9 +19,13 @@ class ProgrammeController extends AbstractController
 
         $programmes = $programmeRepository->findAll();
 
-        return $this->render('programme/index.html.twig', [
-            'programmes' => $programmes
-        ]);
+        if($programmes){
+            return $this->render('programme/index.html.twig', [
+                'programmes' => $programmes
+            ]);
+        } else {
+            return $this->redirectToRoute('app_home');
+        }
     }
     
     #[Route('/admin/programme/new', name: 'new_programme')]
@@ -63,5 +67,19 @@ class ProgrammeController extends AbstractController
 
         return $this->redirectToRoute(('app_programme'));
     }
+
+    // Ajouter un module à un programme dans le détail d'une session
+    // #[Route('/admin/session/{id}/{session}/add', name: 'add_module')]
+    // public function addModule(Module $module, Session $session, EntityManagerInterface $entityManager)
+    // {
+        
+    //     $session->addModule($module);
+             
+    //     $entityManager->persist($module);
+     
+    //     $entityManager->flush();
+     
+    //     return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
+    // }
 
 }
