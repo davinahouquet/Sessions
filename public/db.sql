@@ -146,13 +146,16 @@ CREATE TABLE IF NOT EXISTS `programme` (
   KEY `IDX_3DDCB9FFAFC2B591` (`module_id`),
   CONSTRAINT `FK_3DDCB9FF613FECDF` FOREIGN KEY (`session_id`) REFERENCES `session` (`id`),
   CONSTRAINT `FK_3DDCB9FFAFC2B591` FOREIGN KEY (`module_id`) REFERENCES `module` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.programme : ~3 rows (environ)
+-- Listage des données de la table sessions.programme : ~6 rows (environ)
 INSERT INTO `programme` (`id`, `session_id`, `duree`, `module_id`) VALUES
 	(1, 2, 365, 12),
 	(2, 3, 365, 2),
-	(3, 1, 354, 6);
+	(3, 1, 354, 6),
+	(4, 1, 50, 14),
+	(5, 5, 35, 8),
+	(6, 8, 25, 15);
 
 -- Listage de la structure de table sessions. session
 CREATE TABLE IF NOT EXISTS `session` (
@@ -168,9 +171,9 @@ CREATE TABLE IF NOT EXISTS `session` (
   KEY `IDX_D044D5D4155D8F51` (`formateur_id`),
   CONSTRAINT `FK_D044D5D4155D8F51` FOREIGN KEY (`formateur_id`) REFERENCES `formateur` (`id`),
   CONSTRAINT `FK_D044D5D45200282E` FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.session : ~9 rows (environ)
+-- Listage des données de la table sessions.session : ~10 rows (environ)
 INSERT INTO `session` (`id`, `formation_id`, `formateur_id`, `titre`, `nb_places`, `date_debut`, `date_fin`) VALUES
 	(1, 5, 1, 'Assistant(e) en chirurgie dentaire', 15, '2023-09-21 14:30:56', '2024-09-21 14:31:00'),
 	(2, 3, 2, 'Responsable comptable', 10, '2023-10-21 14:31:25', '2024-09-21 14:31:32'),
@@ -181,7 +184,9 @@ INSERT INTO `session` (`id`, `formation_id`, `formateur_id`, `titre`, `nb_places
 	(8, 1, 3, 'test update', 6, '2018-01-01 00:00:00', '2018-01-01 00:00:00'),
 	(9, 16, 3, 'Médiation animale -', 5, '2024-02-01 00:00:00', '2024-09-30 00:00:00'),
 	(10, 1, 3, 'Test Session', 50, '2023-09-26 00:00:00', '2025-09-30 00:00:00'),
-	(11, 6, 2, 'Personal shopper', 5, '2020-01-01 00:00:00', '2020-12-12 00:00:00');
+	(11, 6, 2, 'Personal shopper', 5, '2020-01-01 00:00:00', '2020-12-12 00:00:00'),
+	(12, 18, 7, 'test session 12', 12, '2022-12-12 00:00:00', '2023-12-12 00:00:00'),
+	(13, 18, 5, 'retest session stagiaires', 4, '2005-05-05 00:00:00', '2015-08-14 00:00:00');
 
 -- Listage de la structure de table sessions. stagiaire
 CREATE TABLE IF NOT EXISTS `stagiaire` (
@@ -219,15 +224,24 @@ CREATE TABLE IF NOT EXISTS `stagiaire_session` (
   CONSTRAINT `FK_D32D02D4BBA93DD6` FOREIGN KEY (`stagiaire_id`) REFERENCES `stagiaire` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.stagiaire_session : ~7 rows (environ)
+-- Listage des données de la table sessions.stagiaire_session : ~16 rows (environ)
 INSERT INTO `stagiaire_session` (`stagiaire_id`, `session_id`) VALUES
 	(1, 1),
 	(1, 2),
 	(1, 3),
+	(1, 13),
+	(2, 1),
 	(2, 2),
+	(3, 1),
 	(3, 3),
+	(3, 11),
+	(3, 12),
+	(4, 1),
 	(4, 3),
-	(5, 1);
+	(4, 11),
+	(5, 1),
+	(5, 11),
+	(5, 12);
 
 -- Listage de la structure de table sessions. user
 CREATE TABLE IF NOT EXISTS `user` (
@@ -240,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.user : ~4 rows (environ)
+-- Listage des données de la table sessions.user : ~3 rows (environ)
 INSERT INTO `user` (`id`, `pseudo`, `email`, `roles`, `password`) VALUES
 	(1, '', 'test@test', '[]', '$2y$13$DeifcFPlbr50qKZh5iyW1Ol6IeNsTczthk74Ur.l5ngJvhWWws8bi'),
 	(2, '', 'test1@test1', '[]', '$2y$13$F8cvl/Htzzs64CF1u.U2ou8jYNAvAPQatgJIRTFO3am/4wqI6f5bG'),
