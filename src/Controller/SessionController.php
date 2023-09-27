@@ -91,4 +91,16 @@ class SessionController extends AbstractController
         return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
     }
 
+    #[Route('/admin/session/{id}/{session}/remove', name: 'remove_stagiaire')]
+    public function removeStagiaire(Stagiaire $stagiaire, Session $session, EntityManagerInterface $entityManager)
+    {
+    
+        $session->removeStagiaire($stagiaire);
+        
+        $entityManager->persist($stagiaire);
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
+    }
 }
