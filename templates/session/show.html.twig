@@ -40,7 +40,7 @@
                     <tr>
                         <th>Nom du module</th>
                         <th>Nombre de jours</th>
-                        <th>Supprimer</th>
+                        <th>Supprimer du programme</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,14 +48,29 @@
                     <tr>
                         <td>{{programmes.module}}</td>
                         <td>{{programmes.duree}} jours</td>
-                        <td>X</td>
+                        <td><a href=""><span class="material-symbols-outlined">close</span></a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
     
-            <p>ICI afficher les modules non programmés (par catégorie?) avec possibilité de les rajouter au programme</p>
-
+            <h6> Modules non programmés :</h6><br>
+           <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom du module</th>
+                    <th>Ajouter au programme</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for module in nonProgrammes %}
+                    <tr>
+                        <td>{{module}}</td>
+                        <td><a href="{{path('add_programme',{'id' : module.id, 'session' : session.id})}}"><span class="material-symbols-outlined">add</a></span></td>
+                {% endfor %}
+                    </tr>
+            </tbody>
+           </table>
         <h3>Stagiaires inscrits </h3>
     
         <table class="table table-striped table-warning">
@@ -72,7 +87,7 @@
                 <tr>
                     <td><a href="{{path('show_stagiaire', {'id' : stagiaires.id})}}"> • {{stagiaires}}</a></td>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <td><a href="{{path('remove_stagiaire',{'id' : stagiaires.id, 'session' : session.id})}}">X</a></td>
+                        <td><a href="{{path('remove_stagiaire',{'id' : stagiaires.id, 'session' : session.id})}}"><span class="material-symbols-outlined">close</span></a></td>
                     {% endif %}
                 </tr>
                 {% endfor %}<br>
