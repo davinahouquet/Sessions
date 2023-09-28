@@ -42,12 +42,12 @@ class SessionType extends AbstractType
                     'autocomplete' => 'off'
                 ]
             ])
-            ->add('stagiaires', null, [
-                'required' => true,
-                'attr' => [
-                    'autocomplete' => 'off'
-                ]
-            ])
+            // ->add('stagiaires', null, [
+            //     'required' => true,
+            //     'attr' => [
+            //         'autocomplete' => 'off'
+            //     ]
+            // ])
             ->add('valider', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-success'
