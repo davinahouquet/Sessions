@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+// use App\Entity\Module;
 use App\Entity\Programme;
 use App\Form\ProgrammeType;
 use App\Repository\ProgrammeRepository;
@@ -9,6 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+// use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ProgrammeController extends AbstractController
@@ -72,7 +74,6 @@ class ProgrammeController extends AbstractController
     // #[Route('/admin/session/{id}/{session}/add', name: 'add_module')]
     // public function addModule(Module $module, Session $session, EntityManagerInterface $entityManager)
     // {
-        
     //     $session->addModule($module);
              
     //     $entityManager->persist($module);

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Module;
 use App\Entity\Session;
+use App\Entity\Programme;
 use App\Entity\Stagiaire;
 use App\Form\SessionType;
 use App\Repository\SessionRepository;
@@ -112,10 +113,15 @@ class SessionController extends AbstractController
     }
 
     // Ajouter un programme dans le détail d'une session
-    #[Route('/admin/session/{id}/{session}/add', name: 'add_programme')]
-    public function addProgramme(Programme $programme, Session $session, EntityManagerInterface $entityManager)
+    #[Route('/admin/session/{module}/{session}/add_programme', name: 'add_programme')]
+    public function addProgramme(Request $request,Module $module, Session $session, EntityManagerInterface $entityManager)
     {
-    
+        $programme = new Programme();
+        $programme->setSession($session);
+        $programme->setModule($module);
+        $duree = $request->request->get("duree");
+        $programme->setDuree($duree);
+
         $session->addProgramme($programme);
         
         $entityManager->persist($programme);
@@ -125,12 +131,16 @@ class SessionController extends AbstractController
         return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
     }
 
-    // Retirer un module d'un programme dans le détail d'une session 
-    // #[Route('/admin/session/{id}/{session}/remove', name: 'remove_module')]
-    // public function removeModule(Module $module, Session $session, EntityManagerInterface $entityManager)
-    // {
+     // Remove un programme dans le détail d'une session
+     #[Route('/admin/session/{module}/{session}/remove_programme', name: 'remove_programme')]
+     public function removeProgramme(Module $module, Session $session, Programme $programme, EntityManagerInterface $entityManager)
+     { 
 
-    // }
-
+        $session->removeProgramme($programme);
+        
+        $entityManager->flush();
+    
+        return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
+    }
 
 }

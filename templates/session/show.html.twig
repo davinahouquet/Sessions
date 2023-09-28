@@ -37,10 +37,12 @@
 
             <table class="table table-striped table-info">
                 <thead>
-                    <tr>
+                    <tr class="table-active">
                         <th>Nom du module</th>
                         <th>Nombre de jours</th>
-                        <th>Supprimer du programme</th>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <th>Supprimer du programme</th>
+                        {% endif %}
                     </tr>
                 </thead>
                 <tbody>
@@ -48,25 +50,46 @@
                     <tr>
                         <td>{{programmes.module}}</td>
                         <td>{{programmes.duree}} jours</td>
-                        <td><a href=""><span class="material-symbols-outlined">close</span></a></td>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <td><a href="{{ path('remove_programme',{'module' : programmes.module.id, 'session' : session.id})}}"><span class="material-symbols-outlined">close</span></a></td>                            
+                        {% endif %}
                     </tr>
                     {% endfor %}
+                    <tr>
+                        <td>Total :</td>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <td></td>
+                        {% endif %}
+                        <td>jours</td>
+                    </tr>
                 </tbody>
             </table>
     
             <h6> Modules non programmés :</h6><br>
            <table class="table table-striped">
             <thead>
-                <tr>
+                <tr class="table-active">
                     <th>Nom du module</th>
-                    <th>Ajouter au programme</th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <th>Durée</th>
+                        <th>Ajouter</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
                 {% for module in nonProgrammes %}
                     <tr>
                         <td>{{module}}</td>
-                        <td><a href="{{path('add_programme',{'id' : module.id, 'session' : session.id})}}"><span class="material-symbols-outlined">add</a></span></td>
+                        <td>
+                            {% if is_granted('ROLE_ADMIN') %}
+                            <form action="{{ path('add_programme',{'module' : module.id, 'session' : session.id})}}" method="POST">
+                                <input type="number" name="duree" id="duree">
+                        </td>
+                        <td>
+                            <input type="submit" value="Ajouter">
+                            </form>
+                        </td>   
+                            {% endif %}
                 {% endfor %}
                     </tr>
             </tbody>
@@ -75,7 +98,7 @@
     
         <table class="table table-striped table-warning">
             <thead>
-                <tr>
+                <tr class="table-active">
                     <th>Prenom Nom</th>
                     {% if is_granted('ROLE_ADMIN') %}
                         <th>Supprimer de la session</th>
@@ -98,7 +121,7 @@
 
         <table class="table table-striped">
             <thead>
-                <tr>
+                <tr class="table-active">
                     <th>Prenom Nom</th>
                     {% if is_granted('ROLE_ADMIN') %}
                         <th>Ajouter à la session</th>
@@ -111,7 +134,7 @@
                     <td> <a href="{{path('show_stagiaire', {'id' : stagiaire.id})}}"> • {{stagiaire}}</a></td>
                     {% if is_granted('ROLE_ADMIN') %}
                     {# <td><a href="">+</a></td> #}
-                        <td><a href="{{path('add_stagiaire',{'id' : stagiaire.id, 'session' : session.id})}}">+</a></td>
+                        <td><a href="{{path('add_stagiaire',{'id' : stagiaire.id, 'session' : session.id})}}"><span class="material-symbols-outlined">add</a></span></td>
                     {% endif %}
                 </tr>
                 {% endfor %}
