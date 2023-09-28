@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Module;
 use App\Entity\Session;
-use App\Entity\Programme;
 use App\Entity\Stagiaire;
 use App\Form\SessionType;
 use App\Repository\SessionRepository;
@@ -63,6 +62,13 @@ class SessionController extends AbstractController
     #[Route('/session/{id}', name: 'show_session')]
     public function show(Session $session, SessionRepository $sr): Response
     {
+
+        // $totalDuree = 0;
+        // $duree = $programme->getDuree();
+        // foreach($duree as $jours){
+        //     $totalDuree = $jours ++;
+        // }
+
         $session_id = $session->getId();
         $nonInscrits = $sr->findNonInscrits($session_id);
         $nonProgrammes = $sr->findNonProgrammes($session_id);
@@ -71,6 +77,7 @@ class SessionController extends AbstractController
             'session' =>  $session,
             'nonInscrits' => $nonInscrits,
             'nonProgrammes' => $nonProgrammes
+            // 'totalDuree' => $totalDuree
         ]);
     }
 
