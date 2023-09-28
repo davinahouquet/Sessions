@@ -53,6 +53,14 @@ a{
     transition: 0.2s;
 }
 
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+}
+
 a:hover{
     color: rgb(242,62,110);
     text-decoration: none;
@@ -136,14 +144,6 @@ h1{
     color: white;
     background-color: #979797;
     border-radius: 5px;
-}
-
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
 }
 
 /* Statut des sessions dans Home */

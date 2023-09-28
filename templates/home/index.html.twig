@@ -28,7 +28,7 @@
                 <tbody>
                     {% for session in sessionsEnCours %}
                     <tr>
-                        <td>{% if session.nbInscrits == session.nbPlaces %}
+                        <td>{% if session.nbInscrits >= session.nbPlaces %}
                             <p class="complet">Complet</p>
                         {% else %}
                             <p class="ouvert">Ouvert</p>
@@ -69,7 +69,7 @@
                 <tbody>
                     {% for session in sessionsAVenir %}
                     <tr>
-                        <td>{% if session.nbInscrits == session.nbPlaces %}
+                        <td>{% if session.nbInscrits >= session.nbPlaces %}
                             <p class="complet">Complet</p>
                         {% else %}
                             <p class="ouvert">Ouvert</p>
@@ -111,7 +111,7 @@
             <tbody>
                 {% for session in sessionsPassees %}
                 <tr>
-                    <td>{% if session.nbInscrits == session.nbPlaces %}
+                    <td>{% if session.nbInscrits >= session.nbPlaces %}
                         <p class="complet">Complet</p>
                     {% else %}
                         <p class="ouvert">Ouvert</p>

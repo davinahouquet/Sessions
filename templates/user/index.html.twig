@@ -7,14 +7,25 @@
     <div class="container">
         <h1>Mon profil</h1><br>
     
+<button><a href="{{ path('edit_user', {'id' : app.user.id})}}">Modifier user</a></button>
+
         <h2>Mes informations personnelles</h2><br>
-        <p>Nom</p><br>
-        <p>Prenom</p><br>
-        <p>Courriel</p><br>
+        
+        <p>Pseudo : {{app.user.pseudo}}</p>
+        <p><a href="">Modifier</a></p><br>
 
-        <h3>Mes sessions en cours</h3><br>
+        <p>Courriel : {{app.user.email}}</p>
+        <p><a href="">Modifier</a></p><br>
 
-        <h4>Mes sessions passées</h4><br>
+        <p>Mot de passe : {{app.user.password}}</p>
+        <p><a href="">Modifier le mot de passe</a></p><br>
+
+        <p><a href="">Supprimer mon compte</a></p>
+
+    
+        {# <h3>Mes sessions en cours</h3><br>
+
+        <h4>Mes sessions passées</h4><br> #}
     </div>
 
 {% endblock %}
