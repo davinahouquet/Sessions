@@ -25,7 +25,7 @@
                 <li><a href="{{path('app_programme')}}">PROGRAMMES</a></li>
 
                 {% if app.user %}
-                <li><a href="">Mon profil</a></li>
+                <li><a href="{{path('app_user')}}">Mon profil</a></li>
                     <li><a href="{{path('app_logout')}}">Se déconnecter</a></li>
                 {% else %}   
                     <li><a href="{{path('app_register')}}">S'inscrire</a></li>
@@ -33,7 +33,7 @@
                 {% endif %}
 
                 {% if is_granted('ROLE_ADMIN') %}
-                    <button>Administration</button>
+                    <button><a href="{{path('app_admin')}}">Administration</a></button>
                 {% endif %}
             </ul>
         </nav>

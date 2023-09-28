@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Panneau administratif</h1><br>
+
+        <button type="button" class="btn btn-outline-danger"><a href="{{path('new_formation')}}">Ajouter une formation</a></button><br><br>
+        <button type="button" class="btn btn-outline-danger"><a href="{{path('new_session')}}">Ajouter une session</a></button><br><br>
+        <button type="button" class="btn btn-outline-danger"><a href="{{path('new_module')}}">Ajouter un module</a></button><br><br>
+        <button type="button" class="btn btn-outline-danger"><a href="{{path('new_programme')}}">Ajouter un programme</a></button><br><br>
+        <button type="button" class="btn btn-outline-danger"><a href="{{path('new_categorie')}}">Ajouter une catégorie</a></button><br><br>
+        <button type="button" class="btn btn-outline-info"><a href="{{path('new_stagiaire')}}">Ajouter un stagiaire</a></button><br><br>
+        <button type="button" class="btn btn-outline-info"><a href="{{path('new_formateur')}}">Ajouter un formateur</a></button><br><br>
+
+    </div>
+
+{% endblock %}
