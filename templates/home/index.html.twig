@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Home{% endblock %}
+{% block meta_description %}Accueil{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -27,7 +28,11 @@
                 <tbody>
                     {% for session in sessionsEnCours %}
                     <tr>
-                        <td></td>
+                        <td>{% if session.nbInscrits == session.nbPlaces %}
+                            <p class="complet">Complet</p>
+                        {% else %}
+                            <p class="ouvert">Ouvert</p>
+                        {% endif %}</td>
                         <td><a href="{{path('show_session', {'id' : session.id})}}">{{session.titre}}</a></td>
                         <td><a href="{{path('show_formation', {'id' : session.formation.id})}}">{{session.formation}}</a></td>
                         <td>{{session.dateDebutFr}}</td>
@@ -64,7 +69,11 @@
                 <tbody>
                     {% for session in sessionsAVenir %}
                     <tr>
-                        <td></td>
+                        <td>{% if session.nbInscrits == session.nbPlaces %}
+                            <p class="complet">Complet</p>
+                        {% else %}
+                            <p class="ouvert">Ouvert</p>
+                        {% endif %}</td>
                         <td><a href="{{path('show_session', {'id' : session.id})}}">{{session.titre}}</a></td>
                         <td><a href="{{path('show_formation', {'id' : session.formation.id})}}">{{session.formation}}</a></td>
                         <td>{{session.dateDebutFr}}</td>
@@ -102,7 +111,12 @@
             <tbody>
                 {% for session in sessionsPassees %}
                 <tr>
-                    <td></td>
+                    <td>{% if session.nbInscrits == session.nbPlaces %}
+                        <p class="complet">Complet</p>
+                    {% else %}
+                        <p class="ouvert">Ouvert</p>
+                    {% endif %}
+                    </td>
                     <td><a href="{{path('show_session', {'id' : session.id})}}">{{session.titre}}</a></td>
                     <td><a href="{{path('show_formation', {'id' : session.formation.id})}}">{{session.formation}}</a></td>
                     <td>{{session.dateDebutFr}}</td>
@@ -112,7 +126,7 @@
                     {% if is_granted('ROLE_ADMIN') %}
                             <td><a href="{{path('edit_session', {'id' : session.id})}}"><img src="img/crayon.png" alt="crayon" width="20"></a></td>
                             <!--<a href="https://www.flaticon.com/fr/icones-gratuites/crayon" title="crayon icônes">Crayon icônes créées par Freepik - Flaticon</a>-->
-                        {% endif %}
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>

@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Détail d'une session{% endblock %}
+{% block meta_description %}Détails d'une session{% endblock %}
 
 {% block body %}
 
@@ -61,6 +62,7 @@
                         <td></td>
                         {% endif %}
                         <td>jours</td>
+                        {# <td>{{totalDuree}}jours</td> #}
                     </tr>
                 </tbody>
             </table>
