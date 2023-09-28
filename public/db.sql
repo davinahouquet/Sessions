@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `module` (
   PRIMARY KEY (`id`),
   KEY `IDX_C242628BCF5E72D` (`categorie_id`),
   CONSTRAINT `FK_C242628BCF5E72D` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table sessions.module : ~16 rows (environ)
 INSERT INTO `module` (`id`, `categorie_id`, `nom_module`) VALUES
@@ -132,8 +132,7 @@ INSERT INTO `module` (`id`, `categorie_id`, `nom_module`) VALUES
 	(12, 4, 'EXCEL'),
 	(13, 4, 'FICHE DE PAIE'),
 	(14, 4, 'COMMANDE FOURNISSEUR'),
-	(15, 4, 'test update'),
-	(16, 1, 'test update admin');
+	(17, 1, 'Test');
 
 -- Listage de la structure de table sessions. programme
 CREATE TABLE IF NOT EXISTS `programme` (
@@ -146,16 +145,21 @@ CREATE TABLE IF NOT EXISTS `programme` (
   KEY `IDX_3DDCB9FFAFC2B591` (`module_id`),
   CONSTRAINT `FK_3DDCB9FF613FECDF` FOREIGN KEY (`session_id`) REFERENCES `session` (`id`),
   CONSTRAINT `FK_3DDCB9FFAFC2B591` FOREIGN KEY (`module_id`) REFERENCES `module` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table sessions.programme : ~6 rows (environ)
 INSERT INTO `programme` (`id`, `session_id`, `duree`, `module_id`) VALUES
 	(1, 2, 365, 12),
 	(2, 3, 365, 2),
 	(3, 1, 354, 6),
-	(4, 1, 50, 14),
 	(5, 5, 35, 8),
-	(6, 8, 25, 15);
+	(8, 3, 5, 4),
+	(9, 3, 5, 5),
+	(13, 1, 12, 1),
+	(14, 1, 14, 2),
+	(16, 15, 25, 1),
+	(17, 15, 25, 2),
+	(18, 12, 12, 17);
 
 -- Listage de la structure de table sessions. session
 CREATE TABLE IF NOT EXISTS `session` (
@@ -171,9 +175,9 @@ CREATE TABLE IF NOT EXISTS `session` (
   KEY `IDX_D044D5D4155D8F51` (`formateur_id`),
   CONSTRAINT `FK_D044D5D4155D8F51` FOREIGN KEY (`formateur_id`) REFERENCES `formateur` (`id`),
   CONSTRAINT `FK_D044D5D45200282E` FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.session : ~10 rows (environ)
+-- Listage des données de la table sessions.session : ~13 rows (environ)
 INSERT INTO `session` (`id`, `formation_id`, `formateur_id`, `titre`, `nb_places`, `date_debut`, `date_fin`) VALUES
 	(1, 5, 1, 'Assistant(e) en chirurgie dentaire', 15, '2023-09-21 14:30:56', '2024-09-21 14:31:00'),
 	(2, 3, 2, 'Responsable comptable', 10, '2023-10-21 14:31:25', '2024-09-21 14:31:32'),
@@ -185,8 +189,14 @@ INSERT INTO `session` (`id`, `formation_id`, `formateur_id`, `titre`, `nb_places
 	(9, 16, 3, 'Médiation animale -', 5, '2024-02-01 00:00:00', '2024-09-30 00:00:00'),
 	(10, 1, 3, 'Test Session', 50, '2023-09-26 00:00:00', '2025-09-30 00:00:00'),
 	(11, 6, 2, 'Personal shopper', 5, '2020-01-01 00:00:00', '2020-12-12 00:00:00'),
-	(12, 18, 7, 'test session 12', 12, '2022-12-12 00:00:00', '2023-12-12 00:00:00'),
-	(13, 18, 5, 'retest session stagiaires', 4, '2005-05-05 00:00:00', '2015-08-14 00:00:00');
+	(12, 18, 7, 'test session 12', 13, '2022-12-12 00:00:00', '2023-12-12 00:00:00'),
+	(13, 18, 5, 'retest session stagiaires', 4, '2005-05-05 00:00:00', '2015-08-14 00:00:00'),
+	(14, 2, 4, 'Développeur web et web mobile', 15, '2023-09-28 00:00:00', '2023-10-28 00:00:00'),
+	(15, 1, 1, 'test', 1, '2002-12-01 00:00:00', '2006-05-02 00:00:00'),
+	(16, 1, 1, 'retest', 56, '2202-02-25 00:00:00', '2300-02-02 00:00:00'),
+	(17, 1, 1, 'hsrh', 23, '2023-05-03 00:00:00', '2023-12-06 00:00:00'),
+	(18, 6, 2, 'jtjetj', 56, '2023-02-23 00:00:00', '2024-12-24 00:00:00'),
+	(19, 5, 5, 'wthwst', 47, '2042-12-14 00:00:00', '2045-04-23 00:00:00');
 
 -- Listage de la structure de table sessions. stagiaire
 CREATE TABLE IF NOT EXISTS `stagiaire` (
@@ -199,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `stagiaire` (
   `courriel` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `telephone` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table sessions.stagiaire : ~9 rows (environ)
 INSERT INTO `stagiaire` (`id`, `nom`, `prenom`, `sexe`, `date_naissance`, `ville`, `courriel`, `telephone`) VALUES
@@ -211,7 +221,12 @@ INSERT INTO `stagiaire` (`id`, `nom`, `prenom`, `sexe`, `date_naissance`, `ville
 	(9, 'test', 'update', '1', '2018-01-01 00:00:00', 'test', 'test@test.fr', 5555),
 	(10, 'MAYER', 'Marie', '', '1999-03-29 00:00:00', 'Strasbourg', 'mayermarie@live.fr', 65998745),
 	(11, 'VALLERAN', 'Simon', '1', '1888-12-04 00:00:00', 'Sarreguemines', 'simon@vall.fr', 616325789),
-	(12, 'MONTLUTRION', 'Pierre-Loup', '1', '1998-08-05 00:00:00', 'Colmar', 'pierreloup@hotmail.com', 116689452);
+	(12, 'MONTLUTRION', 'Pierre-Loup', '1', '1998-08-05 00:00:00', 'Colmar', 'pierreloup@hotmail.com', 116689452),
+	(13, 'POCHIN', 'Ludovic', '1', '2001-04-05 00:00:00', 'Nice', 'ludo@outlook.fr', 613325987),
+	(14, 'MINELLI', 'Jasmine', '1', '2004-06-05 00:00:00', 'Rome', 'jasminelli@gmail.com', 445632597),
+	(15, 'LOUBOUTIN', 'Christian', '1', '1954-12-05 00:00:00', 'Paris', 'louboubou@outlook.com', 636569874),
+	(16, 'SILENA', 'Aliya', '', '2000-08-04 00:00:00', 'Brest', 'aliyasile@outlook.com', 663354516),
+	(17, 'VASILI', 'Julia', '', '1995-12-06 00:00:00', 'Rouen', 'juliavasili@outlook.com', 645236894);
 
 -- Listage de la structure de table sessions. stagiaire_session
 CREATE TABLE IF NOT EXISTS `stagiaire_session` (
@@ -229,19 +244,51 @@ INSERT INTO `stagiaire_session` (`stagiaire_id`, `session_id`) VALUES
 	(1, 1),
 	(1, 2),
 	(1, 3),
+	(1, 6),
+	(1, 9),
+	(1, 12),
 	(1, 13),
+	(1, 14),
 	(2, 1),
 	(2, 2),
 	(3, 1),
 	(3, 3),
+	(3, 6),
+	(3, 9),
 	(3, 11),
 	(3, 12),
+	(3, 13),
+	(3, 14),
+	(3, 15),
 	(4, 1),
 	(4, 3),
+	(4, 6),
 	(4, 11),
+	(4, 12),
 	(5, 1),
+	(5, 6),
+	(5, 9),
 	(5, 11),
-	(5, 12);
+	(5, 12),
+	(5, 13),
+	(5, 14),
+	(9, 12),
+	(10, 1),
+	(10, 9),
+	(10, 12),
+	(10, 13),
+	(10, 14),
+	(11, 6),
+	(11, 12),
+	(12, 12),
+	(13, 12),
+	(14, 9),
+	(14, 12),
+	(15, 9),
+	(15, 12),
+	(15, 13),
+	(16, 12),
+	(17, 12);
 
 -- Listage de la structure de table sessions. user
 CREATE TABLE IF NOT EXISTS `user` (
@@ -252,14 +299,21 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.user : ~3 rows (environ)
+-- Listage des données de la table sessions.user : ~10 rows (environ)
 INSERT INTO `user` (`id`, `pseudo`, `email`, `roles`, `password`) VALUES
 	(1, '', 'test@test', '[]', '$2y$13$DeifcFPlbr50qKZh5iyW1Ol6IeNsTczthk74Ur.l5ngJvhWWws8bi'),
 	(2, '', 'test1@test1', '[]', '$2y$13$F8cvl/Htzzs64CF1u.U2ou8jYNAvAPQatgJIRTFO3am/4wqI6f5bG'),
 	(3, 'admin', 'admin@admin.fr', '["ROLE_ADMIN"]', '$2y$13$aqLC4Hs3Uj9lbxuLHl6xoOHZiX5y2BqzOzUgcU06S8wMU4VbcEnXq'),
-	(4, 'admin1', 'admin@admin.com', '["ROLE_ADMIN"]', '$2y$13$1.TwhMG/274oKeWlRHJjDutCRUwWwWCMXfJmP/oVTw9QSRABw4/uq');
+	(4, 'admin1', 'admin@admin.com', '["ROLE_ADMIN"]', '$2y$13$1.TwhMG/274oKeWlRHJjDutCRUwWwWCMXfJmP/oVTw9QSRABw4/uq'),
+	(5, 'Douvipop', 'douvipop@gmail.com', '[]', '$2y$13$2DgICVhu0h3YBaFe.bqLlOBR7eoJB.bhHnT1XXLptWZNPFjrBscJO'),
+	(6, 'daviboule', 'daviboul@gmail.com', '[]', '$2y$13$R.iTaUSdqhfRTOvU7CKYfeJz1jwUVZCVdLUZw.V4mNF123luEqtOC'),
+	(7, 'grominet', 'grominet@gmail.com', '[]', '$2y$13$fvd/pVeiCjy7W1hbEHG.R.GitLUpsRorp2Wkbm4MHsZOGmTigVDY6'),
+	(8, 'titi', 'titi@gmail.com', '[]', '$2y$13$uI.hZaLxs/OcI7KH2YODI.yxyFk7E72PId9d8DTHwoDlskfP8Xuja'),
+	(9, 'chucknorris', 'chucknorris@gmail.com', '[]', '$2y$13$YuSnKW2sn9YSriV.ftskjO.jf1DwqYPIlYRkl77ZFU3oQ6ehZtofS'),
+	(10, 'indianajones', 'indianajones@gmail.com', '[]', '$2y$13$y6RqHgXbACFC7.yRJ69JFuY6iUHN0MJgQEuN0vAEOYb/cDb4qFdkC'),
+	(11, 'test123', 'test@gmail.com', '[]', '$2y$13$e03scTrXDT6u2g9Bgb9HwO6WfLM36iewn0QPMOZwobi2NLErd9ZSm');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
