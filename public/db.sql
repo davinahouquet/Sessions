@@ -67,9 +67,9 @@ CREATE TABLE IF NOT EXISTS `formation` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nom_formation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.formation : ~16 rows (environ)
+-- Listage des données de la table sessions.formation : ~17 rows (environ)
 INSERT INTO `formation` (`id`, `nom_formation`) VALUES
 	(1, 'BUREAUTIQUE'),
 	(2, 'DEV WEB'),
@@ -87,7 +87,9 @@ INSERT INTO `formation` (`id`, `nom_formation`) VALUES
 	(15, 'Comportementaliste animalier'),
 	(16, 'Médiation animale'),
 	(17, 'Art thérapie'),
-	(18, 'Test Formation');
+	(18, 'Test Formation'),
+	(19, 'Huissier de justice'),
+	(20, 'Huissier de justice');
 
 -- Listage de la structure de table sessions. messenger_messages
 CREATE TABLE IF NOT EXISTS `messenger_messages` (
@@ -116,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `module` (
   CONSTRAINT `FK_C242628BCF5E72D` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.module : ~16 rows (environ)
+-- Listage des données de la table sessions.module : ~15 rows (environ)
 INSERT INTO `module` (`id`, `categorie_id`, `nom_module`) VALUES
 	(1, 1, 'FRONT'),
 	(2, 1, 'BACK'),
@@ -145,9 +147,9 @@ CREATE TABLE IF NOT EXISTS `programme` (
   KEY `IDX_3DDCB9FFAFC2B591` (`module_id`),
   CONSTRAINT `FK_3DDCB9FF613FECDF` FOREIGN KEY (`session_id`) REFERENCES `session` (`id`),
   CONSTRAINT `FK_3DDCB9FFAFC2B591` FOREIGN KEY (`module_id`) REFERENCES `module` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.programme : ~6 rows (environ)
+-- Listage des données de la table sessions.programme : ~11 rows (environ)
 INSERT INTO `programme` (`id`, `session_id`, `duree`, `module_id`) VALUES
 	(1, 2, 365, 12),
 	(2, 3, 365, 2),
@@ -157,9 +159,7 @@ INSERT INTO `programme` (`id`, `session_id`, `duree`, `module_id`) VALUES
 	(9, 3, 5, 5),
 	(13, 1, 12, 1),
 	(14, 1, 14, 2),
-	(16, 15, 25, 1),
-	(17, 15, 25, 2),
-	(18, 12, 12, 17);
+	(19, 2, 45, 4);
 
 -- Listage de la structure de table sessions. session
 CREATE TABLE IF NOT EXISTS `session` (
@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `session` (
   CONSTRAINT `FK_D044D5D45200282E` FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.session : ~13 rows (environ)
+-- Listage des données de la table sessions.session : ~18 rows (environ)
 INSERT INTO `session` (`id`, `formation_id`, `formateur_id`, `titre`, `nb_places`, `date_debut`, `date_fin`) VALUES
 	(1, 5, 1, 'Assistant(e) en chirurgie dentaire', 15, '2023-09-21 14:30:56', '2024-09-21 14:31:00'),
 	(2, 3, 2, 'Responsable comptable', 10, '2023-10-21 14:31:25', '2024-09-21 14:31:32'),
@@ -189,14 +189,7 @@ INSERT INTO `session` (`id`, `formation_id`, `formateur_id`, `titre`, `nb_places
 	(9, 16, 3, 'Médiation animale -', 5, '2024-02-01 00:00:00', '2024-09-30 00:00:00'),
 	(10, 1, 3, 'Test Session', 50, '2023-09-26 00:00:00', '2025-09-30 00:00:00'),
 	(11, 6, 2, 'Personal shopper', 5, '2020-01-01 00:00:00', '2020-12-12 00:00:00'),
-	(12, 18, 7, 'test session 12', 13, '2022-12-12 00:00:00', '2023-12-12 00:00:00'),
-	(13, 18, 5, 'retest session stagiaires', 4, '2005-05-05 00:00:00', '2015-08-14 00:00:00'),
-	(14, 2, 4, 'Développeur web et web mobile', 15, '2023-09-28 00:00:00', '2023-10-28 00:00:00'),
-	(15, 1, 1, 'test', 1, '2002-12-01 00:00:00', '2006-05-02 00:00:00'),
-	(16, 1, 1, 'retest', 56, '2202-02-25 00:00:00', '2300-02-02 00:00:00'),
-	(17, 1, 1, 'hsrh', 23, '2023-05-03 00:00:00', '2023-12-06 00:00:00'),
-	(18, 6, 2, 'jtjetj', 56, '2023-02-23 00:00:00', '2024-12-24 00:00:00'),
-	(19, 5, 5, 'wthwst', 47, '2042-12-14 00:00:00', '2045-04-23 00:00:00');
+	(14, 2, 4, 'Développeur web et web mobile', 15, '2023-09-28 00:00:00', '2023-10-28 00:00:00');
 
 -- Listage de la structure de table sessions. stagiaire
 CREATE TABLE IF NOT EXISTS `stagiaire` (
@@ -211,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `stagiaire` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.stagiaire : ~9 rows (environ)
+-- Listage des données de la table sessions.stagiaire : ~14 rows (environ)
 INSERT INTO `stagiaire` (`id`, `nom`, `prenom`, `sexe`, `date_naissance`, `ville`, `courriel`, `telephone`) VALUES
 	(1, 'MIRIN', 'Pria', 'F', '2001-09-21 14:26:28', 'Strasbourg', 'priamirin@hotmail.fr', 615698745),
 	(2, 'STEPHAN', 'Fanny', 'F', '1989-09-21 14:27:22', 'Sarreguemines', 'fannystephan@hotmail.fr', 659869472),
@@ -239,15 +232,13 @@ CREATE TABLE IF NOT EXISTS `stagiaire_session` (
   CONSTRAINT `FK_D32D02D4BBA93DD6` FOREIGN KEY (`stagiaire_id`) REFERENCES `stagiaire` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.stagiaire_session : ~16 rows (environ)
+-- Listage des données de la table sessions.stagiaire_session : ~48 rows (environ)
 INSERT INTO `stagiaire_session` (`stagiaire_id`, `session_id`) VALUES
 	(1, 1),
 	(1, 2),
 	(1, 3),
 	(1, 6),
 	(1, 9),
-	(1, 12),
-	(1, 13),
 	(1, 14),
 	(2, 1),
 	(2, 2),
@@ -256,39 +247,22 @@ INSERT INTO `stagiaire_session` (`stagiaire_id`, `session_id`) VALUES
 	(3, 6),
 	(3, 9),
 	(3, 11),
-	(3, 12),
-	(3, 13),
 	(3, 14),
-	(3, 15),
 	(4, 1),
 	(4, 3),
 	(4, 6),
 	(4, 11),
-	(4, 12),
 	(5, 1),
 	(5, 6),
 	(5, 9),
 	(5, 11),
-	(5, 12),
-	(5, 13),
 	(5, 14),
-	(9, 12),
 	(10, 1),
 	(10, 9),
-	(10, 12),
-	(10, 13),
 	(10, 14),
 	(11, 6),
-	(11, 12),
-	(12, 12),
-	(13, 12),
 	(14, 9),
-	(14, 12),
-	(15, 9),
-	(15, 12),
-	(15, 13),
-	(16, 12),
-	(17, 12);
+	(15, 9);
 
 -- Listage de la structure de table sessions. user
 CREATE TABLE IF NOT EXISTS `user` (
@@ -299,9 +273,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.user : ~10 rows (environ)
+-- Listage des données de la table sessions.user : ~11 rows (environ)
 INSERT INTO `user` (`id`, `pseudo`, `email`, `roles`, `password`) VALUES
 	(1, '', 'test@test', '[]', '$2y$13$DeifcFPlbr50qKZh5iyW1Ol6IeNsTczthk74Ur.l5ngJvhWWws8bi'),
 	(2, '', 'test1@test1', '[]', '$2y$13$F8cvl/Htzzs64CF1u.U2ou8jYNAvAPQatgJIRTFO3am/4wqI6f5bG'),
@@ -313,7 +287,8 @@ INSERT INTO `user` (`id`, `pseudo`, `email`, `roles`, `password`) VALUES
 	(8, 'titi', 'titi@gmail.com', '[]', '$2y$13$uI.hZaLxs/OcI7KH2YODI.yxyFk7E72PId9d8DTHwoDlskfP8Xuja'),
 	(9, 'chucknorris', 'chucknorris@gmail.com', '[]', '$2y$13$YuSnKW2sn9YSriV.ftskjO.jf1DwqYPIlYRkl77ZFU3oQ6ehZtofS'),
 	(10, 'indianajones', 'indianajones@gmail.com', '[]', '$2y$13$y6RqHgXbACFC7.yRJ69JFuY6iUHN0MJgQEuN0vAEOYb/cDb4qFdkC'),
-	(11, 'test123', 'test@gmail.com', '[]', '$2y$13$e03scTrXDT6u2g9Bgb9HwO6WfLM36iewn0QPMOZwobi2NLErd9ZSm');
+	(11, 'test123', 'test@gmail.com', '[]', '$2y$13$e03scTrXDT6u2g9Bgb9HwO6WfLM36iewn0QPMOZwobi2NLErd9ZSm'),
+	(12, 'TESTMDP', 'testmdp@testmdp', '[]', '$2y$13$A00XCISZhf3/eV1sKc0g4.BExChwGmOMjkBTGfBGGJeOCGNdbOQGW');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
