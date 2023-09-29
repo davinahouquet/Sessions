@@ -14,11 +14,12 @@
         <p>Pseudo : {{app.user.pseudo}}</p><br>
         <button type="button" class="btn btn-outline-danger btn-sm"><a href="{{ path('edit_user', {'id' : app.user.id})}}">Modifier pseudo</a></button><br><br>
 
-        <p>Courriel : {{app.user.email}}</p><br>
+        <p>Courriel : {{app.user.email}}</p><br><br>
         {# <p><a href="">Modifier</a></p><br> #}
 
         <p>Mot de passe : {{app.user.password}}</p><br>
-        {# <p><a href="">Modifier le mot de passe</a></p><br> #}
+        {# <button type="button" class="btn btn-outline-danger btn-sm"><a href="{{ path('app_reset_password')}}">Modifier mot de passe</a></button><br><br> #}
+        <button type="button" class="btn btn-outline-danger btn-sm"><a href="">Modifier mot de passe</a></button><br><br>
 
         <p><a href="">Supprimer mon compte</a></p>
 
