@@ -29,6 +29,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
+    min-width: 100%;
 	line-height: 1;
 }
 ol, ul {
@@ -68,10 +69,8 @@ a:hover{
 }
 
 nav{
-    width: 100%;
+    min-width: 100%;
     height: 50px;
-    /* background: rgb(15,168,140);
-    background: linear-gradient(166deg, rgba(15,168,140,1) 0%, rgba(48,56,55,1) 100%); */
     background: rgb(242,62,110);
     background: linear-gradient(156deg, rgba(242,62,110,1) 35%, rgba(43,109,194,1) 100%);
     display: flex;
@@ -79,10 +78,11 @@ nav{
     align-items: center;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     margin-bottom: 30px;
+    font-size: calc(0.5rem + 0.5vw);
 }
 
 ul{
-    font-size: 14px;
+    /* font-size: 14px; */
     list-style-type: none;
     display: flex;
     justify-content: space-around;
@@ -117,6 +117,40 @@ nav button:hover{
     background: #d3325d;
     /* background: linear-gradient(190deg, rgb(255, 121, 59) 0%, #f74a7e 100%); */
     transition: 0.3s;
+}
+
+#icons{
+    cursor: pointer;
+    display: none;
+}
+
+/* Tous les réglages là ne sont valables QU'EN DESSOUS d'une largeur d'écran de 650px */
+@media (max-width : 650px){
+    #icons{
+        display: block;
+    }
+    #icons:before{
+        content: "\2630"
+    }
+    .active #icons:before{
+        content: "\2715";
+    }
+    nav ul{
+        width: 100%;
+        position: fixed;
+        left: -100%;
+        top: 5%;
+        flex-direction: column;
+        transition: 0.2s;
+        background: rgb(242,62,110);
+        background: linear-gradient(156deg, rgba(242,62,110,1) 35%, rgba(43,109,194,1) 100%);
+    }
+    nav li{
+        padding: 3px 0;
+    }
+    nav.active ul{
+        left: 0;
+    }
 }
 
 h1{
