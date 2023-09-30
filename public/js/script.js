@@ -1,3 +1,4 @@
+// Responsive, permet de faire apparaître les éléments de la nav lorsuq'on clique sur le menu
 const links = document.querySelectorAll('nav li');
 
 icons.addEventListener("click", () => {
@@ -9,3 +10,10 @@ links.forEach((link)=>{
         nav.classList.remove("active");
     });
 });
+
+// Theme color : dark/light
+
+function myFunction() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+}

@@ -1,6 +1,11 @@
  @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,500&display=swap');
 
-
+:root{
+    --background-color-light : #ffff;
+    --text-color-light: #202020;
+    --background-color-dark: rgb(51, 51, 51);
+    --text-color-dark: #ffff;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -28,10 +33,25 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
     min-width: 100%;
 	line-height: 1;
 }
+
+/* Bouton de choix du thème */
+.dark-mode{
+    width: 100px;
+    background-color: #941f3e;
+}
+
+.dark-mode {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+  }
+
 ol, ul {
 	list-style: none;
 }
@@ -82,7 +102,6 @@ nav{
 }
 
 ul{
-    /* font-size: 14px; */
     list-style-type: none;
     display: flex;
     justify-content: space-around;
@@ -107,7 +126,6 @@ nav button{
     height: auto;
     padding: 5px;
     background: #f23e6e;
-    /* background: linear-gradient(190deg, rgb(255, 208, 80) 0%, #f7a94a 100%); */
     border-radius: 5px;
     color: white;
     transition: 0.3s;
@@ -115,7 +133,6 @@ nav button{
 
 nav button:hover{
     background: #d3325d;
-    /* background: linear-gradient(190deg, rgb(255, 121, 59) 0%, #f74a7e 100%); */
     transition: 0.3s;
 }
 
@@ -166,10 +183,10 @@ h1{
     bottom: 0;
     right: 50px;
     width: 500px;
-    height: 500px; /* Ajustez la hauteur selon vos besoins */
+    height: 500px;
     background: url('../img/formation1.png') no-repeat center bottom;
     background-size: cover;
-    z-index: -1; /* Place l'image en arrière-plan */
+    z-index: -1;
 }
 
 .retour{
