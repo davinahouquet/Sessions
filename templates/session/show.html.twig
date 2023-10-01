@@ -44,6 +44,7 @@
                         {% if is_granted('ROLE_ADMIN') %}
                             <th>Supprimer du programme</th>
                         {% endif %}
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -61,8 +62,7 @@
                         {% if is_granted('ROLE_ADMIN') %}
                         <td></td>
                         {% endif %}
-                        <td>jours</td>
-                        {# <td>{{totalDuree}}jours</td> #}
+                        <td>{{totalDuree}} jours</td>
                     </tr>
                 </tbody>
             </table>

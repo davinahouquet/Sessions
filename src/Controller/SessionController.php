@@ -64,11 +64,11 @@ class SessionController extends AbstractController
     public function show(Session $session, SessionRepository $sr): Response
     {
 
-        // $totalDuree = 0;
-        // $duree = $programme->getDuree();
-        // foreach($duree as $jours){
-        //     $totalDuree = $jours ++;
-        // }
+        $totalDuree = 0;
+        foreach ($session->getProgrammes() as $programme)
+        {
+            $totalDuree = $totalDuree + $programme->getDuree();
+        }
 
         $session_id = $session->getId();
         $nonInscrits = $sr->findNonInscrits($session_id);
@@ -77,8 +77,8 @@ class SessionController extends AbstractController
         return $this->render('session/show.html.twig', [
             'session' =>  $session,
             'nonInscrits' => $nonInscrits,
-            'nonProgrammes' => $nonProgrammes
-            // 'totalDuree' => $totalDuree
+            'nonProgrammes' => $nonProgrammes,
+            'totalDuree' => $totalDuree
         ]);
     }
 
