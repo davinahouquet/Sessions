@@ -3,3 +3,13 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+    
+delete_user:
+    path: /user/delete/{id}
+    controller: App\Controller\UserController::delete
+
+default_route:
+    path: /{any}
+    controller: App\Controller\SecurityController::handle
+    requirements:
+        any: ".+"
