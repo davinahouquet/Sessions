@@ -29,4 +29,16 @@ class SecurityController extends AbstractController
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
+
+     /**
+     * @Route("/{any}", name="default_route", requirements={"any"=".+"})
+     */
+    #[Route(path: '/{any}', name: 'default_route')]
+    public function handle(): Response
+    {
+        // Vous pouvez effectuer une redirection vers une autre route ou une page spécifique ici
+        return $this->redirectToRoute('app_home');
+    }
+
+
 }

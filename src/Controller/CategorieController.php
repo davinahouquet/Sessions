@@ -58,9 +58,13 @@ class CategorieController extends AbstractController
     #[Route('/categorie/{id}', name: 'show_categorie')]
     public function show(Categorie $categorie): Response
     {
-        return $this->render('categorie/show.html.twig', [
-            'categorie' =>  $categorie
-        ]);
+        if(!$categorie){
+            return $this->redirectToRoute("app_home");
+        } else {
+            return $this->render('categorie/show.html.twig', [
+                'categorie' =>  $categorie
+            ]);
+        }
     }
 
     #[Route('/admin/categorie/{id}/delete', name: 'delete_categorie')]
