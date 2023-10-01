@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `programme` (
   CONSTRAINT `FK_3DDCB9FFAFC2B591` FOREIGN KEY (`module_id`) REFERENCES `module` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.programme : ~11 rows (environ)
+-- Listage des données de la table sessions.programme : ~9 rows (environ)
 INSERT INTO `programme` (`id`, `session_id`, `duree`, `module_id`) VALUES
 	(1, 2, 365, 12),
 	(2, 3, 365, 2),
@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `session` (
   CONSTRAINT `FK_D044D5D45200282E` FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.session : ~18 rows (environ)
+-- Listage des données de la table sessions.session : ~11 rows (environ)
 INSERT INTO `session` (`id`, `formation_id`, `formateur_id`, `titre`, `nb_places`, `date_debut`, `date_fin`) VALUES
 	(1, 5, 1, 'Assistant(e) en chirurgie dentaire', 15, '2023-09-21 14:30:56', '2024-09-21 14:31:00'),
 	(2, 3, 2, 'Responsable comptable', 10, '2023-10-21 14:31:25', '2024-09-21 14:31:32'),
@@ -232,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `stagiaire_session` (
   CONSTRAINT `FK_D32D02D4BBA93DD6` FOREIGN KEY (`stagiaire_id`) REFERENCES `stagiaire` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.stagiaire_session : ~48 rows (environ)
+-- Listage des données de la table sessions.stagiaire_session : ~29 rows (environ)
 INSERT INTO `stagiaire_session` (`stagiaire_id`, `session_id`) VALUES
 	(1, 1),
 	(1, 2),
@@ -275,10 +275,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.user : ~11 rows (environ)
+-- Listage des données de la table sessions.user : ~10 rows (environ)
 INSERT INTO `user` (`id`, `pseudo`, `email`, `roles`, `password`) VALUES
 	(1, '', 'test@test', '[]', '$2y$13$DeifcFPlbr50qKZh5iyW1Ol6IeNsTczthk74Ur.l5ngJvhWWws8bi'),
-	(2, '', 'test1@test1', '[]', '$2y$13$F8cvl/Htzzs64CF1u.U2ou8jYNAvAPQatgJIRTFO3am/4wqI6f5bG'),
 	(3, 'admin', 'admin@admin.fr', '["ROLE_ADMIN"]', '$2y$13$aqLC4Hs3Uj9lbxuLHl6xoOHZiX5y2BqzOzUgcU06S8wMU4VbcEnXq'),
 	(4, 'admin1', 'admin@admin.com', '["ROLE_ADMIN"]', '$2y$13$1.TwhMG/274oKeWlRHJjDutCRUwWwWCMXfJmP/oVTw9QSRABw4/uq'),
 	(5, 'Douvipop', 'douvipop@gmail.com', '[]', '$2y$13$2DgICVhu0h3YBaFe.bqLlOBR7eoJB.bhHnT1XXLptWZNPFjrBscJO'),
