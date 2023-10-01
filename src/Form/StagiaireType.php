@@ -18,8 +18,16 @@ class StagiaireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom', TextType::class)
-            ->add('prenom', TextType::class)
+            ->add('nom', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('prenom', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
             ->add('sexe', ChoiceType::class, [
                 'choices'  => [
                     'H' => true,
@@ -32,9 +40,21 @@ class StagiaireType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-            ->add('ville', TextType::class)
-            ->add('courriel', EmailType::class)
-            ->add('telephone', NumberType::class)
+            ->add('ville', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('courriel', EmailType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('telephone', NumberType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
             // ->add('sessions')
             ->add('valider', SubmitType::class, [
                 'attr' => [
