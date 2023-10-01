@@ -21,7 +21,7 @@
         {# <button type="button" class="btn btn-outline-danger btn-sm"><a href="{{ path('app_reset_password')}}">Modifier mot de passe</a></button><br><br> #}
         <button type="button" class="btn btn-outline-danger btn-sm"><a href="">Modifier mot de passe</a></button><br><br>
 
-        <p><a href="">Supprimer mon compte</a></p>
+        <p><a href="{{ path('delete_user', {'id': app.user.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')">Supprimer mon compte</a></p>
 
     
         {# <h3>Mes sessions en cours</h3><br>

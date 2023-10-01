@@ -51,4 +51,22 @@ class UserController extends AbstractController
         ]);
     }
     
+    #[Route('/user/delete/{id}', name: 'delete_user')]
+    public function delete(User $user, EntityManagerInterface $entityManager): Response
+    {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        // Supprimez l'utilisateur de la base de données
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        $this->addFlash(
+            'success',
+            'L\'utilisateur a été supprimé avec succès'
+        );
+
+        return $this->redirectToRoute('app_register');
+    }
 }
