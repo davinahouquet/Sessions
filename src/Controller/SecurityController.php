@@ -36,7 +36,7 @@ class SecurityController extends AbstractController
     #[Route(path: '/{any}', name: 'default_route')]
     public function handle(): Response
     {
-        // Vous pouvez effectuer une redirection vers une autre route ou une page spécifique ici
+        // La route par défaut
         return $this->redirectToRoute('app_home');
     }
 

@@ -33,7 +33,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             
-
+            $this->addFlash('success', 'Inscription réussie ! ♥ En route vers la formation ');
             return $this->redirectToRoute('app_login');
         }
 

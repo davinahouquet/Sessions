@@ -17,7 +17,12 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('pseudo', TextType::class)
+        ->add('pseudo', TextType::class, [
+            'attr' => [
+                'class' => 'form-control'
+            ],
+            'label' => 'Nouveau pseudo'
+        ])
                       
         ->add('valider', SubmitType::class, [
             'attr' => [

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Form\EmailFormType;
+use App\Form\ChangePasswordFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -98,5 +99,34 @@ class UserController extends AbstractController
         );
 
         return $this->redirectToRoute('app_register');
+    }
+
+    #[Route('/user/upgradePassword/{id}', name: 'upgrade_password')]
+    public function upgradePassword(User $user, Request $request, EntityManagerInterface $entityManager) : Response
+    {
+        // Si l'user n'existe pas redirection à home
+        if(!$this->getUser()){
+            return $this->redirectToRoute('app_login');
+        }
+    
+        $password = $this->getUser()->getPassword();
+
+        $form = $this->createForm(ChangePasswordFormType::class, $user);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $user = $form->getData();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Les informations de votre compte ont bien été modifiées'
+            ); 
+            return $this->redirectToRoute('app_user');
+        }
+        return $this->render('user/edit.html.twig', [
+            'form' => $form
+        ]);
     }
 }
