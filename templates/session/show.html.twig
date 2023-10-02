@@ -18,7 +18,9 @@
         <table class="table table-striped table-danger">
             <thead>
                 <tr>
+                    {% if is_granted('ROLE_USER') %}
                     <th>Formateur référent</th>
+                    {% endif %}
                     <th>Formation</th>
                     <th>Date de début</th>
                     <th>Date de fin</th>
@@ -26,7 +28,9 @@
             </thead>
             <tbody>
                 <tr>
+                    {% if is_granted('ROLE_USER') %}
                     <td><a href="{{path('show_formateur', {'id' : session.formateur.id})}}">{{session.formateur}}</a></td>
+                    {% endif %}
                     <td><a href="{{path('show_formation', {'id' : session.formation.id})}}">{{session.formation}}</a></td>
                     <td>{{session.dateDebutFr}}</td>
                     <td>{{session.dateFinFr}}</td>
@@ -96,6 +100,8 @@
                     </tr>
             </tbody>
            </table>
+
+        {% if is_granted('ROLE_ADMIN') %}
         <h3>Stagiaires inscrits </h3>
     
         <table class="table table-striped table-warning">
@@ -141,7 +147,8 @@
                 </tr>
                 {% endfor %}
             </tbody>
-        </table>
+        </table>    
+        {% endif %}
             
     </div>
 {% endblock %}

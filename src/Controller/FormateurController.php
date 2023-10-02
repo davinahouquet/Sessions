@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class FormateurController extends AbstractController
 {
-    #[Route('/formateur', name: 'app_formateur')]
+    #[Route('/user/formateur', name: 'app_formateur')]
     public function index(FormateurRepository $formateurRepository): Response
     {
 
