@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Form\EmailFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,6 +52,35 @@ class UserController extends AbstractController
         ]);
     }
     
+        #[Route('/user/editUserEmail/{id}', name: 'edit_user_email')]
+        public function editEmail(User $user, Request $request, EntityManagerInterface $entityManager) : Response
+        {
+            // Si l'user n'existe pas redirection à home
+            if(!$this->getUser()){
+                return $this->redirectToRoute('app_login');
+            }
+        
+            $email = $this->getUser()->getEmail();
+    
+            $form = $this->createForm(EmailFormType::class, $user);
+    
+            $form->handleRequest($request);
+            if($form->isSubmitted() && $form->isValid()){
+                $user = $form->getData();
+                $entityManager->persist($user);
+                $entityManager->flush();
+    
+                $this->addFlash(
+                    'success',
+                    'Les informations de votre compte ont bien été modifiées'
+                ); 
+                return $this->redirectToRoute('app_user');
+            }
+            return $this->render('user/edit.html.twig', [
+                'form' => $form
+            ]);
+        }
+    
     #[Route('/user/delete/{id}', name: 'delete_user')]
     public function delete(User $user, EntityManagerInterface $entityManager): Response
     {
@@ -58,7 +88,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        // Supprimez l'utilisateur de la base de données
+        // Supprime l'utilisateur de la base de données
         $entityManager->remove($user);
         $entityManager->flush();
 
