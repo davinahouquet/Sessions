@@ -1,10 +1,23 @@
  @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,500&display=swap');
 
 :root{
+    /* Couleurs relatives aux theme dark/light */
     --background-color-light : #ffff;
-    --text-color-light: #202020;
+    --text-color-light: #292929;
     --background-color-dark: rgb(51, 51, 51);
     --text-color-dark: #ffff;
+    /* Palette de couleurs */
+    --dark-blue: #2a3d5e;
+    --blue: #2c6ec3;
+    --clearblue: #72a1e2;
+    --dark-yellow: #f4ab4c;
+    --soft-yellow: #fad189;
+    --dark-pink: #bf2251;
+    --pink: #e5336e;
+    --softpink: #fbd3e9;
+    --green: rgb(103, 175, 103);
+    --softgrey: #979797;
+    --grey: #524f50;
 }
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -42,9 +55,8 @@ body {
 }
 
 /* Bouton de choix du thème */
-.dark-mode{
-    width: 100px;
-    background-color: #941f3e;
+.dark-mode button a{
+    color: var(--text-color-dark);
 }
 
 .dark-mode {
@@ -69,7 +81,7 @@ table {
 }
 
 a{
-    color: rgb(53, 53, 53);
+    color: var(--text-color-light);
     text-decoration: none;
     transition: 0.2s;
 }
@@ -83,7 +95,7 @@ a{
 }
 
 a:hover{
-    color: rgb(242,62,110);
+    color: var(--softpink);
     text-decoration: none;
     transition: 0.2s;
 }
@@ -91,8 +103,8 @@ a:hover{
 nav{
     min-width: 100%;
     height: 50px;
-    background: rgb(242,62,110);
-    background: linear-gradient(156deg, rgba(242,62,110,1) 35%, rgba(43,109,194,1) 100%);
+    background: var(--dark-pink);
+    background: linear-gradient(156deg, rgba(242,62,110,1) 35%, #2b6dc2 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -125,14 +137,21 @@ nav button{
     width: 150px;
     height: auto;
     padding: 5px;
-    background: #f23e6e;
+    background: var(--pink);
     border-radius: 5px;
-    color: white;
+    color: var(--text-color-dark);
     transition: 0.3s;
 }
 
+nav button a{
+    color: var(--text-color-dark);
+}
+nav button a:hover{
+    color: var(--text-color-dark);
+}
+
 nav button:hover{
-    background: #d3325d;
+    background: var(--grey);
     transition: 0.3s;
 }
 
@@ -160,7 +179,7 @@ nav button:hover{
         flex-direction: column;
         transition: 0.2s;
         background: rgb(242,62,110);
-        background: linear-gradient(156deg, rgba(242,62,110,1) 35%, rgba(43,109,194,1) 100%);
+        background: linear-gradient(156deg, var(--pink) 35%, var(--blue) 100%);
     }
     nav li{
         padding: 3px 0;
@@ -192,22 +211,22 @@ h1{
 .retour{
     margin-bottom: 20px;
     border: none;
-    color: white;
-    background-color: #979797;
+    color: var(--text-color-dark);
+    background-color: var(--softgrey);
     border-radius: 5px;
 }
 
 /* Statut des sessions dans Home */
 .complet{
-    background-color: #e5336e;
-    color: white;
+    background-color: var(--pink);
+    color: var(--text-color-dark);
     padding: 5px;
     text-align: center;
     border-radius: 5px;
 }
 
 .ouvert{
-    background-color: rgb(103, 175, 103);
+    background-color: var(--green);
     color:white;
     padding: 5px;
     text-align: center;
