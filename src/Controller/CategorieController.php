@@ -46,6 +46,7 @@ class CategorieController extends AbstractController
             
             $entityManager->flush();
     
+            $this->addFlash('message', 'La catégorie a bien été ajoutée');
             return $this->redirectToRoute('show_categorie', ['id' => $categorie->getId()]);
         }
     
@@ -73,6 +74,7 @@ class CategorieController extends AbstractController
         $entityManager->remove($categorie);
         $entityManager->flush();
 
+        $this->addFlash('message', 'La catégorie a bien été supprimée');
         return $this->redirectToRoute(('app_categorie'));
     }
 }

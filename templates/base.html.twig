@@ -52,7 +52,12 @@
             <div id="icons"></div>
         </nav>
     </head>
+    {% for message in app.flashes('message') %}
+        {{ message }}
+    {% endfor %}
     <body>
+        
+
         {% block body %}
         {% endblock %}
 

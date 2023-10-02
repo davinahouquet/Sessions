@@ -52,6 +52,7 @@ class ProgrammeController extends AbstractController
             
             $entityManager->flush();
     
+            $this->addFlash('message', 'Le programme a bien été ajouté/édité');
             return $this->redirectToRoute('app_programme');
         }
     
@@ -67,6 +68,7 @@ class ProgrammeController extends AbstractController
         $entityManager->remove($programme);
         $entityManager->flush();
 
+        $this->addFlash('message', 'Le programme a bien été supprimé');
         return $this->redirectToRoute(('app_programme'));
     }
 

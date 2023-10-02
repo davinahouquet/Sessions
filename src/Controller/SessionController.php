@@ -50,6 +50,7 @@ class SessionController extends AbstractController
             $entityManager->persist($session);
             $entityManager->flush();
     
+            $this->addFlash('message', 'La session a bien été ajoutée');
             return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
         }
     
@@ -89,6 +90,7 @@ class SessionController extends AbstractController
         $entityManager->remove($session);
         $entityManager->flush();
             
+        $this->addFlash('message', 'La session a bien été suprimée');
         return $this->redirectToRoute(('app_session'));
     }
 

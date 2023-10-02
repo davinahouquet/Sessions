@@ -45,9 +45,11 @@ class FormationController extends AbstractController
             $entityManager->persist($formation);
             $entityManager->flush();
         
+            $this->addFlash('message', 'La formation a bien été ajoutée/éditée');
             return $this->redirectToRoute('show_formation', ['id' => $formation->getId()]);
         }
         
+
         return $this->render('formation/new.html.twig', [
             'formAddFormation' => $form,
             'edit' => $formation->getId()
@@ -72,6 +74,7 @@ class FormationController extends AbstractController
         $entityManager->remove($formation);
         $entityManager->flush();
             
+        $this->addFlash('message', 'La formation a bien été supprimée');
         return $this->redirectToRoute(('app_formation'));
     }
     
