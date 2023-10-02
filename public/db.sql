@@ -24,14 +24,18 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nom_categorie` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table sessions.categorie : ~4 rows (environ)
 INSERT INTO `categorie` (`id`, `nom_categorie`) VALUES
 	(1, 'INFORMATIQUE'),
 	(2, 'MEDICAL'),
 	(3, 'RESSOURCES HUMAINES'),
-	(4, 'COMPTABILITE');
+	(4, 'COMPTABILITE'),
+	(6, 'ol'),
+	(7, 'test'),
+	(8, 'tfqer'),
+	(9, 'strh');
 
 -- Listage de la structure de table sessions. doctrine_migration_versions
 CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
@@ -51,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `formateur` (
   `prenom` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `nom` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table sessions.formateur : ~6 rows (environ)
 INSERT INTO `formateur` (`id`, `prenom`, `nom`) VALUES
@@ -60,16 +64,17 @@ INSERT INTO `formateur` (`id`, `prenom`, `nom`) VALUES
 	(3, 'Angélique', 'HUBERT'),
 	(4, 'Henri', 'CHARLES'),
 	(5, 'Margaux', 'PORTE'),
-	(7, 'Test update', 'Test update');
+	(7, 'Test update', 'Test update'),
+	(8, 'dytu', 'dytj');
 
 -- Listage de la structure de table sessions. formation
 CREATE TABLE IF NOT EXISTS `formation` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nom_formation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.formation : ~17 rows (environ)
+-- Listage des données de la table sessions.formation : ~19 rows (environ)
 INSERT INTO `formation` (`id`, `nom_formation`) VALUES
 	(1, 'BUREAUTIQUE'),
 	(2, 'DEV WEB'),
@@ -89,7 +94,9 @@ INSERT INTO `formation` (`id`, `nom_formation`) VALUES
 	(17, 'Art thérapie'),
 	(18, 'Test Formation'),
 	(19, 'Huissier de justice'),
-	(20, 'Huissier de justice');
+	(20, 'Huissier de justice'),
+	(21, 'Test 12'),
+	(22, 'qger');
 
 -- Listage de la structure de table sessions. messenger_messages
 CREATE TABLE IF NOT EXISTS `messenger_messages` (
@@ -175,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `session` (
   KEY `IDX_D044D5D4155D8F51` (`formateur_id`),
   CONSTRAINT `FK_D044D5D4155D8F51` FOREIGN KEY (`formateur_id`) REFERENCES `formateur` (`id`),
   CONSTRAINT `FK_D044D5D45200282E` FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table sessions.session : ~11 rows (environ)
 INSERT INTO `session` (`id`, `formation_id`, `formateur_id`, `titre`, `nb_places`, `date_debut`, `date_fin`) VALUES
@@ -189,7 +196,8 @@ INSERT INTO `session` (`id`, `formation_id`, `formateur_id`, `titre`, `nb_places
 	(9, 16, 3, 'Médiation animale -', 5, '2024-02-01 00:00:00', '2024-09-30 00:00:00'),
 	(10, 1, 3, 'Test Session', 50, '2023-09-26 00:00:00', '2025-09-30 00:00:00'),
 	(11, 6, 2, 'Personal shopper', 5, '2020-01-01 00:00:00', '2020-12-12 00:00:00'),
-	(14, 2, 4, 'Développeur web et web mobile', 15, '2023-09-28 00:00:00', '2023-10-28 00:00:00');
+	(14, 2, 4, 'Développeur web et web mobile', 15, '2023-09-28 00:00:00', '2023-10-28 00:00:00'),
+	(20, 1, 1, 'dytu', 50, '2012-02-01 00:00:00', '2013-05-03 00:00:00');
 
 -- Listage de la structure de table sessions. stagiaire
 CREATE TABLE IF NOT EXISTS `stagiaire` (
@@ -273,9 +281,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.user : ~10 rows (environ)
+-- Listage des données de la table sessions.user : ~12 rows (environ)
 INSERT INTO `user` (`id`, `pseudo`, `email`, `roles`, `password`) VALUES
 	(1, '', 'test@test', '[]', '$2y$13$DeifcFPlbr50qKZh5iyW1Ol6IeNsTczthk74Ur.l5ngJvhWWws8bi'),
 	(3, 'admin', 'admin@admin.fr', '["ROLE_ADMIN"]', '$2y$13$aqLC4Hs3Uj9lbxuLHl6xoOHZiX5y2BqzOzUgcU06S8wMU4VbcEnXq'),
@@ -287,7 +295,8 @@ INSERT INTO `user` (`id`, `pseudo`, `email`, `roles`, `password`) VALUES
 	(9, 'chucknorris', 'chucknorris@gmail.com', '[]', '$2y$13$YuSnKW2sn9YSriV.ftskjO.jf1DwqYPIlYRkl77ZFU3oQ6ehZtofS'),
 	(10, 'indianajones', 'indianajones@gmail.com', '[]', '$2y$13$y6RqHgXbACFC7.yRJ69JFuY6iUHN0MJgQEuN0vAEOYb/cDb4qFdkC'),
 	(11, 'test123', 'test@gmail.com', '[]', '$2y$13$e03scTrXDT6u2g9Bgb9HwO6WfLM36iewn0QPMOZwobi2NLErd9ZSm'),
-	(12, 'TESTMDP', 'testmdp@testmdp', '[]', '$2y$13$A00XCISZhf3/eV1sKc0g4.BExChwGmOMjkBTGfBGGJeOCGNdbOQGW');
+	(12, 'TESTMDP', 'testmdp@testmdp', '[]', '$2y$13$A00XCISZhf3/eV1sKc0g4.BExChwGmOMjkBTGfBGGJeOCGNdbOQGW'),
+	(13, 'Eleonore', 'ele@gmail.com', '[]', '$2y$13$uC0aIwxc9V/si5O1F2v8B.4dk0s.Fegds56FAStomFR.mjNX9zWce');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
