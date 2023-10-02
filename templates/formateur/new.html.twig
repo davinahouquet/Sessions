@@ -5,6 +5,13 @@
 
 {% block body %}
     <div class="container">
+
+        {% if edit %}
+            <h1>Editer un formateur</h1>
+        {% else %}
+            <h1>Ajouter un formateur</h1>
+        {% endif %}
+
         {{ form_start(formAddFormateur) }}
     
             {{ form_row(formAddFormateur.nom)}}   

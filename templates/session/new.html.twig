@@ -4,7 +4,15 @@
 {% block meta_description %}Ajout Session{% endblock %}
 
 {% block body %}
-    <div class="container">
+
+
+<div class="container">
+        {% if edit %}
+            <h1>Editer une session</h1>
+        {% else %}
+            <h1>Ajouter une session</h1>
+        {% endif %}
+        
         {{ form_start(formAddSession) }}
     
             {{ form_row(formAddSession.titre)}}   
