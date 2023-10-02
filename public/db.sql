@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.categorie : ~4 rows (environ)
+-- Listage des données de la table sessions.categorie : ~8 rows (environ)
 INSERT INTO `categorie` (`id`, `nom_categorie`) VALUES
 	(1, 'INFORMATIQUE'),
 	(2, 'MEDICAL'),
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
   PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
--- Listage des données de la table sessions.doctrine_migration_versions : ~0 rows (environ)
+-- Listage des données de la table sessions.doctrine_migration_versions : ~1 rows (environ)
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
 	('DoctrineMigrations\\Version20230921115118', '2023-09-21 11:51:29', 513);
 
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `formateur` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.formateur : ~6 rows (environ)
+-- Listage des données de la table sessions.formateur : ~7 rows (environ)
 INSERT INTO `formateur` (`id`, `prenom`, `nom`) VALUES
 	(1, 'Jean', 'DUPONT'),
 	(2, 'Lucie', 'PAULIN'),
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `formation` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.formation : ~19 rows (environ)
+-- Listage des données de la table sessions.formation : ~21 rows (environ)
 INSERT INTO `formation` (`id`, `nom_formation`) VALUES
 	(1, 'BUREAUTIQUE'),
 	(2, 'DEV WEB'),
@@ -184,11 +184,11 @@ CREATE TABLE IF NOT EXISTS `session` (
   CONSTRAINT `FK_D044D5D45200282E` FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.session : ~11 rows (environ)
+-- Listage des données de la table sessions.session : ~12 rows (environ)
 INSERT INTO `session` (`id`, `formation_id`, `formateur_id`, `titre`, `nb_places`, `date_debut`, `date_fin`) VALUES
 	(1, 5, 1, 'Assistant(e) en chirurgie dentaire', 15, '2023-09-21 14:30:56', '2024-09-21 14:31:00'),
 	(2, 3, 2, 'Responsable comptable', 10, '2023-10-21 14:31:25', '2024-09-21 14:31:32'),
-	(3, 2, 3, 'Développeur web et web mobile', 20, '2024-09-21 14:32:09', '2025-09-21 14:32:12'),
+	(3, 2, 3, 'Développeur web et web mobile', 13, '2024-09-21 00:00:00', '2025-09-21 00:00:00'),
 	(4, 3, 5, 'Comptable', 10, '2023-11-22 13:34:38', '2024-09-22 13:34:44'),
 	(5, 1, 2, 'Rédactrice PE', 25, '2023-10-01 13:36:09', '2024-03-22 13:36:19'),
 	(6, 5, 5, 'test', 4, '2021-01-01 00:00:00', '2022-01-01 00:00:00'),
@@ -245,32 +245,52 @@ INSERT INTO `stagiaire_session` (`stagiaire_id`, `session_id`) VALUES
 	(1, 1),
 	(1, 2),
 	(1, 3),
+	(1, 4),
 	(1, 6),
 	(1, 9),
 	(1, 14),
 	(2, 1),
 	(2, 2),
+	(2, 3),
 	(3, 1),
 	(3, 3),
+	(3, 4),
 	(3, 6),
 	(3, 9),
 	(3, 11),
 	(3, 14),
 	(4, 1),
 	(4, 3),
+	(4, 4),
 	(4, 6),
 	(4, 11),
 	(5, 1),
+	(5, 3),
+	(5, 4),
 	(5, 6),
 	(5, 9),
 	(5, 11),
 	(5, 14),
+	(9, 3),
 	(10, 1),
+	(10, 3),
+	(10, 4),
 	(10, 9),
 	(10, 14),
+	(11, 3),
 	(11, 6),
+	(12, 3),
+	(12, 4),
+	(13, 3),
+	(13, 4),
+	(14, 3),
+	(14, 4),
 	(14, 9),
-	(15, 9);
+	(15, 3),
+	(15, 4),
+	(15, 9),
+	(16, 3),
+	(16, 4);
 
 -- Listage de la structure de table sessions. user
 CREATE TABLE IF NOT EXISTS `user` (
