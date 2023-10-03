@@ -22,8 +22,8 @@
                     <tr>
                         <td><a href="{{path('show_formation', {'id' : formation.id})}}">{{formation.nomFormation}}</a></td>
                         {% if is_granted('ROLE_ADMIN') %}
-                            <td><a href="{{path('edit_formation', {'id' : formation.id})}}">Editer</a></td>
-                            <td><a href="{{path('delete_formation', {'id' : formation.id})}}">Supprimer</a></td>
+                            <td><a href="{{path('edit_formation', {'id' : formation.id})}}"><img src="img/crayon.png" alt="crayon" width="20"></a></td>
+                            <td><a href="{{path('delete_formation', {'id' : formation.id})}}"><img src="img/croix.png" alt="crayon" width="20"></a></td>
                         {% endif %}
                     </tr>
                 {% endfor %}

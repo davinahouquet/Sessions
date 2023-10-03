@@ -22,8 +22,8 @@
                 <tr>
                     <td><a href="{{path('show_categorie', {'id' : categorie.id})}}">{{categorie.nomCategorie}}</a></td>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <td><a href="{{path('edit_categorie', {'id' : categorie.id})}}">Editer</a></td>
-                        <td><a href="{{path('delete_categorie', {'id' : categorie.id})}}">Supprimer</a></td>
+                        <td><a href="{{path('edit_categorie', {'id' : categorie.id})}}"><img src="img/crayon.png" alt="crayon" width="20"></a></td>
+                        <td><a href="{{path('delete_categorie', {'id' : categorie.id})}}"><img src="img/croix.png" alt="crayon" width="20"></a></td>
                     {% endif %}
                 </tr>
             {% endfor %}

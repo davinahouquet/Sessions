@@ -24,8 +24,8 @@
                     <td><a href="{{path('show_formateur', {'id' : formateur.id})}}">{{formateur.prenom}}</a></td>
                     <td><a href="{{path('show_formateur', {'id' : formateur.id})}}">{{formateur.nom}}</a></td>
                     {% if is_granted('ROLE_ADMIN') %}
-                    <td><a href="{{path('edit_formateur', {'id' : formateur.id})}}">Editer</a></td>
-                    <td><a href="{{path('delete_formateur', {'id' : formateur.id})}}">Supprimer</a></td>
+                    <td><a href="{{path('edit_formateur', {'id' : formateur.id})}}"><img src="../img/crayon.png" alt="crayon" width="20"></a></td>
+                    <td><a href="{{path('delete_formateur', {'id' : formateur.id})}}"><img src="../img/croix.png" alt="crayon" width="20"></a></td>
                 {% endif %}
                 </tr>
                 {% endfor %}

@@ -26,8 +26,8 @@
                     <td><a href="{{path('show_module', {'id' : programme.module.id})}}">{{programme.module}}</a></td>
                     <td>{{programme.duree}} jours</td>
                     {% if is_granted('ROLE_ADMIN') %}
-                            <td><a href="{{path('edit_programme', {'id' : programme.id})}}">Editer</a></td>
-                            <td><a href="{{path('delete_programme', {'id' : programme.id})}}">Supprimer</a></td>
+                            <td><a href="{{path('edit_programme', {'id' : programme.id})}}"><img src="img/crayon.png" alt="crayon" width="20"></a></td>
+                            <td><a href="{{path('delete_programme', {'id' : programme.id})}}"><img src="img/croix.png" alt="crayon" width="20"></a></td>
                     {% endif %}
                 </tr>
                 {% endfor %}
