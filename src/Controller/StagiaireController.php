@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Stagiaire;
 use App\Form\StagiaireType;
+use App\Service\PdfService;
 use App\Repository\StagiaireRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -71,5 +72,11 @@ class StagiaireController extends AbstractController
         return $this->render('stagiaire/index.html.twig', [
             'stagiaires' => $stagiaires
         ]);
+    }
+
+    #[Route('stagiaire/pdf/{id}', name: 'stagiaire.pdf')]
+    public function generatePdfStagiaire(Stagiaire $stagiaire = null,  PdfService $pdf){
+        $html = $this->render('stagiaire/show.html.twig', ['stagiaire' => $stagiaire]);
+        $pdf->showPdfFile($html);
     }
 }
