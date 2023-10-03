@@ -4,14 +4,18 @@
 {% block meta_description %}Détails d'un module{% endblock %}
 
 {% block body %}
-    <h1>Détail d'un module</h1>
 
-    <h2>{{module.nomModule}}</h2>
-    <p>{{module.categorie}}</p>
+    <div class="container">
+        
+        <h1>Détail d'un module</h1>
     
-    {% if is_granted('ROLE_ADMIN') %}
-        <button><a href="{{path('edit_module', {'id' : module.id})}}">Editer</a></button>
-        <button><a href="{{path('delete_module', {'id' : module.id})}}">Supprimer</a></button>
-    {% endif %}
+        <h2>{{module.nomModule}}</h2>
+        <p>{{module.categorie}}</p>
+        
+        {% if is_granted('ROLE_ADMIN') %}
+            <button type="button" class="btn btn-outline-info"><a href="{{path('edit_module', {'id' : module.id})}}">Editer</a></button>
+            <button type="button" class="btn btn-outline-info"><a href="{{path('delete_module', {'id' : module.id})}}">Supprimer</a></button>
+        {% endif %}
+    </div>
 
 {% endblock %}

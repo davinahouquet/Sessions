@@ -30,7 +30,7 @@
             </tbody>
         </table>
         {% if is_granted('ROLE_ADMIN') %}
-            <button><a href="{{path('new_categorie')}}">Ajouter une categorie</a></button>
+            <button type="button" class="btn btn-outline-primary"><a href="{{path('new_categorie')}}">Ajouter une categorie</a></button>
         {% endif %}
     </div>
 

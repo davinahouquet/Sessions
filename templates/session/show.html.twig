@@ -6,11 +6,11 @@
 {% block body %}
 
     <div class="container">
-        <button class="retour"><a href="{{path('app_session')}}">Retour aux sessions</a></button>
+        <button type="button" class="btn btn-outline-warning"><a href="{{path('app_session')}}">Retour aux sessions</a></button>
     
         {% if is_granted('ROLE_ADMIN') %}
-            <button><a href="{{path('edit_session', {'id' : session.id})}}">Editer</a></button>
-            <button><a href="{{path('delete_session', {'id' : session.id})}}">Supprimer</a></button>
+            <button type="button" class="btn btn-outline-warning"><a href="{{path('edit_session', {'id' : session.id})}}">Editer</a></button>
+            <button type="button" class="btn btn-outline-warning"><a href="{{path('delete_session', {'id' : session.id})}}">Supprimer</a></button>
         {% endif %}
 
         <h1>Session : {{session.titre}} du {{session.dateDebutFr}}</h1><br>
@@ -79,8 +79,10 @@
                 <tr class="table-active">
                     <th>Nom du module</th>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <th>Durée</th>
-                        <th>Ajouter</th>
+                    <th>Durée</th>
+                    <th>Ajouter</th>
+                    {% else %}
+                        <th></th>
                     {% endif %}
                 </tr>
             </thead>

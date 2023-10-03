@@ -4,32 +4,36 @@
 {% block meta_description %}Détails de stagiaire{% endblock %}
 
 {% block body %}
-<button><a href="{{path('app_stagiaire')}}">Retour à la liste des stagiaires</a></button>
-    <h1>Fiche stagiaire</h1><br>
 
-    <h2>{{stagiaire.prenom}} {{stagiaire.nom}}</h2><br>
-    <p>Adresse mail : {{stagiaire.courriel}} Téléphone : {{stagiaire.telephone}}</p><br>
-    
-    <h3>Session(s) auquel {{stagiaire.prenom}} {{stagiaire.nom}} est inscrit(e) :</h3><br>
+    <div class="container">
+        <button type="button" class="btn btn-outline-danger"><a href="{{path('app_stagiaire')}}">Retour</a></button>
+            <h1>Fiche stagiaire</h1><br>
         
-    {# {% for session in sessions %}
-
-        <h4>{{session.titre}}</h4>
-
-        Nombre de places : {{session.nbPlaces}}<br> Date de début : {{session.dateDebutFr}} Date de fin :  {{session.dateFinFr}}<br>
-
-    {% endfor %} #}
-
-    {% for sessions in stagiaire.sessions %}
+            <h2>{{stagiaire.prenom}} {{stagiaire.nom}}</h2><br>
+            
+            <p>Adresse mail : {{stagiaire.courriel}} Téléphone : {{stagiaire.telephone}}</p><br>
+            
+            <h3>Session(s) auquel {{stagiaire.prenom}} {{stagiaire.nom}} est inscrit(e) :</h3><br>
+                
+            {# {% for session in sessions %}
         
-        <a href="{{path('show_session', {'id' : sessions.id})}}">{{sessions.titre}}</a><br>
-        Date de début : {{sessions.dateDebutFr}} Date de fin :  {{sessions.dateFinFr}}<br>
-
-    {% endfor %}
-
-    {% if is_granted('ROLE_ADMIN') %}
-        <button><a href="{{path('edit_stagiaire', {'id' : stagiaire.id})}}">Editer</a></button>
-        <button><a href="{{path('delete_stagiaire', {'id' : stagiaire.id})}}">Supprimer</a></button>
-    {% endif %}
-    <br>
+                <h4>{{session.titre}}</h4>
+        
+                Nombre de places : {{session.nbPlaces}}<br> Date de début : {{session.dateDebutFr}} Date de fin :  {{session.dateFinFr}}<br>
+        
+            {% endfor %} #}
+        
+            {% for sessions in stagiaire.sessions %}
+                
+                <a href="{{path('show_session', {'id' : sessions.id})}}">{{sessions.titre}}</a><br>
+                Date de début : {{sessions.dateDebutFr}} Date de fin :  {{sessions.dateFinFr}}<br>
+        
+            {% endfor %}
+        
+            {% if is_granted('ROLE_ADMIN') %}
+                <button type='button' class='btn btn-outline-danger'><a href="{{path('edit_stagiaire', {'id' : stagiaire.id})}}">Editer</a></button>
+                <button type='button' class='btn btn-outline-danger'><a href="{{path('delete_stagiaire', {'id' : stagiaire.id})}}">Supprimer</a></button>
+            {% endif %}
+            <br>
+    </div>
 {% endblock %}
