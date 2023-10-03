@@ -80,6 +80,7 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+    /* display: block; */
 }
 
 a{
@@ -220,6 +221,10 @@ p{
     .active #icons:before{
         content: "\2715";
     }
+    h1{
+        font-size: 20px;
+    }
+
     nav ul{
         width: 100%;
         position: fixed;
@@ -237,9 +242,32 @@ p{
         left: 0;
     }
     .bg-img{
-        position: absolute;
+        position: sticky;
         width: 350px;
         height: 360px;
         bottom: 10px;
     }
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    /* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+    /* Styles */
+    h1{
+        font-size: 20px;
+    }
+    nav{
+        position: relative;
+    }
+
+    .bg-img{
+        position: sticky;
+        width: 250px;
+        height: 260px;
+        bottom: 0;
+        right: 10px;
+    }
+ 
 }
