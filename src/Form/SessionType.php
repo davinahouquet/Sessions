@@ -16,8 +16,16 @@ class SessionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titre', TextType::class)
-            ->add('nbPlaces', NumberType::class)
+            ->add('titre', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('nbPlaces', NumberType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
             ->add('dateDebut', DateType::class, [
                 'widget' => 'single_text',
                 'attr' => [
@@ -33,13 +41,15 @@ class SessionType extends AbstractType
             ->add('formation', null, [
                 'required' => true,
                 'attr' => [
-                    'autocomplete' => 'off'
+                    'autocomplete' => 'off',
+                    'class' => 'form-control'
                 ]
             ])
             ->add('formateur', null, [
                 'required' => true,
                 'attr' => [
-                    'autocomplete' => 'off'
+                    'autocomplete' => 'off',
+                    'class' => 'form-control'
                 ]
             ])
             // ->add('stagiaires', null, [

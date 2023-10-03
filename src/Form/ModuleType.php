@@ -14,11 +14,16 @@ class ModuleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nomModule', TextType::class)
+            ->add('nomModule', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
             ->add('categorie', null, [
                 'required' => true,
                 'attr' => [
-                    'autocomplete' => 'off'
+                    'autocomplete' => 'off',
+                    'class' => 'form-control'
                 ]
             ])
             ->add('valider', SubmitType::class, [

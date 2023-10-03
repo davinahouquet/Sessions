@@ -46,10 +46,10 @@ class ModuleController extends AbstractController
             
             $entityManager->flush();
     
+            $this->addFlash('message', 'Le module a bien été ajouté/édité');
             return $this->redirectToRoute('show_module', ['id' => $module->getId()]);
         }
     
-        $this->addFlash('message', 'Le module a bien été ajouté/édité');
         return $this->render('module/new.html.twig', [
             'formAddModule' => $form,
             'edit' => $module->getId()

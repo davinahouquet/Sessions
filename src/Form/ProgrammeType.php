@@ -14,17 +14,23 @@ class ProgrammeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('duree', NumberType::class)
+            ->add('duree', NumberType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
             ->add('session',  null, [
                 'required' => true,
                 'attr' => [
-                    'autocomplete' => 'off'
+                    'autocomplete' => 'off',
+                    'class' => 'form-control'
                 ]
             ])
             ->add('module',  null, [
                 'required' => true,
                 'attr' => [
-                    'autocomplete' => 'off'
+                    'autocomplete' => 'off',
+                    'class' => 'form-control'
                 ]
             ])
             ->add('valider', SubmitType::class, [

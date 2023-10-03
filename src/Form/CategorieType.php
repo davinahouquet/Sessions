@@ -14,7 +14,11 @@ class CategorieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nomCategorie', TextType::class)
+            ->add('nomCategorie', TextType::class, [
+                'attr'=>[
+                    'class' => 'form-control'
+                ]
+            ])
             ->add('valider', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-success'
