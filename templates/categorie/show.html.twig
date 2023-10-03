@@ -5,19 +5,21 @@
 
 {% block body %}
 
-    <h1>Détails d'une catégorie</h1>
+    <div class="container">
+        <h1>Détails d'une catégorie</h1>
 
-    <h2>{{categorie.nomCategorie}}</h2><br>
-    
-    <h3>Modules </h3><br>
+        <h2>{{categorie.nomCategorie}}</h2><br>
+        
+        <h3>Modules de la catégorie {{categorie.nomCategorie}}</h3><br>
 
-    {% for modules in categorie.modules %}
-        <a href="{{path('show_module', {'id' : modules.id})}}">{{modules}}</a><br>
-    {% endfor %}
+        {% for modules in categorie.modules %}
+            <a href="{{path('show_module', {'id' : modules.id})}}">{{modules}}</a><br>
+        {% endfor %}
 
-    {% if is_granted('ROLE_ADMIN') %}
-        <button><a href="{{path('edit_categorie', {'id' : categorie.id})}}">Editer</a></button>
-        <button><a href="{{path('delete_categorie', {'id' : categorie.id})}}">Supprimer</a></button>
-    {% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+            <button type="button" class="btn btn-outline-primary"><a href="{{path('edit_categorie', {'id' : categorie.id})}}">Editer</a></button>
+            <button type="button" class="btn btn-outline-primary"><a href="{{path('delete_categorie', {'id' : categorie.id})}}">Supprimer</a></button>
+        {% endif %}
+    </div>
 
 {% endblock %}
