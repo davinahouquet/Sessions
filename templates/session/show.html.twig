@@ -114,6 +114,7 @@
                     <th>Prenom Nom</th>
                     {% if is_granted('ROLE_ADMIN') %}
                         <th>Supprimer de la session</th>
+                        <th>PDF</th>
                     {% endif %}
                 </tr>
             </thead>
@@ -124,6 +125,7 @@
                     {% if is_granted('ROLE_ADMIN') %}
                         <td><a href="{{path('remove_stagiaire',{'id' : stagiaires.id, 'session' : session.id})}}"><span class="material-symbols-outlined">close</span></a></td>
                     {% endif %}
+                    <td><a href="{{path('app_pdf_generator',{'id' : stagiaires.id})}}" type="button" class="btn btn-outline-danger">PDF</a></td>
                 </tr>
                 {% endfor %}<br>
             </tbody>
