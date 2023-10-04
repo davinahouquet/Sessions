@@ -21,7 +21,7 @@ class RouteNotFoundSubscriber implements EventSubscriberInterface
     public function onKernelException(ExceptionEvent $event)
     {
         if($exception = $event->getThrowable()){
-            $redirectUrl = $this->urlGenerator->generate('app_home');
+            $redirectUrl = $this->urlGenerator->generate('app_redirection');
     
             $response = new RedirectResponse($redirectUrl);
     
@@ -35,6 +35,5 @@ class RouteNotFoundSubscriber implements EventSubscriberInterface
             KernelEvents::EXCEPTION => 'onKernelException',
         ];
     }
-
 
 }

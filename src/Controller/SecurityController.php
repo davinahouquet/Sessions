@@ -40,5 +40,8 @@ class SecurityController extends AbstractController
         return $this->redirectToRoute('app_home');
     }
 
-
+    #[Route(path: '/notFound', name: 'app_redirection')]
+    public function redirection(){
+        return $this->render('security/redirection.html.twig');
+    }
 }

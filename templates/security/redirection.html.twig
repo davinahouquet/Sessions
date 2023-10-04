@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}404 Not Found{% endblock %}
+{% block meta_description %}404 Not Found{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>404 Not Found</h1>
+        <h2>Sorry, this page doesn't exist...</h2>
+        
+        <a href="{{path('app_home')}}" type="button" class="btn btn-outline-primary">Retour à la page d'accueil</a>
+    </div>
+{% endblock %}
