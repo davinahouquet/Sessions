@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `formateur` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.formateur : ~6 rows (environ)
+-- Listage des données de la table sessions.formateur : ~7 rows (environ)
 INSERT INTO `formateur` (`id`, `prenom`, `nom`) VALUES
 	(1, 'Jean', 'DUPONT'),
 	(2, 'Lucie', 'PAULIN'),
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `formation` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.formation : ~19 rows (environ)
+-- Listage des données de la table sessions.formation : ~21 rows (environ)
 INSERT INTO `formation` (`id`, `nom_formation`) VALUES
 	(1, 'BUREAUTIQUE'),
 	(2, 'DEV WEB'),
@@ -184,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `session` (
   CONSTRAINT `FK_D044D5D45200282E` FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.session : ~11 rows (environ)
+-- Listage des données de la table sessions.session : ~12 rows (environ)
 INSERT INTO `session` (`id`, `formation_id`, `formateur_id`, `titre`, `nb_places`, `date_debut`, `date_fin`) VALUES
 	(1, 5, 1, 'Assistant(e) en chirurgie dentaire', 15, '2023-09-21 14:30:56', '2024-09-21 14:31:00'),
 	(2, 3, 2, 'Responsable comptable', 10, '2023-10-21 14:31:25', '2024-09-21 14:31:32'),
@@ -240,7 +240,7 @@ CREATE TABLE IF NOT EXISTS `stagiaire_session` (
   CONSTRAINT `FK_D32D02D4BBA93DD6` FOREIGN KEY (`stagiaire_id`) REFERENCES `stagiaire` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.stagiaire_session : ~47 rows (environ)
+-- Listage des données de la table sessions.stagiaire_session : ~51 rows (environ)
 INSERT INTO `stagiaire_session` (`stagiaire_id`, `session_id`) VALUES
 	(1, 1),
 	(1, 2),
@@ -257,6 +257,7 @@ INSERT INTO `stagiaire_session` (`stagiaire_id`, `session_id`) VALUES
 	(3, 4),
 	(3, 6),
 	(3, 9),
+	(3, 10),
 	(3, 11),
 	(3, 14),
 	(4, 1),
@@ -288,6 +289,7 @@ INSERT INTO `stagiaire_session` (`stagiaire_id`, `session_id`) VALUES
 	(14, 9),
 	(15, 3),
 	(15, 4),
+	(15, 5),
 	(15, 9),
 	(16, 3),
 	(16, 4);
@@ -303,7 +305,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sessions.user : ~13 rows (environ)
+-- Listage des données de la table sessions.user : ~12 rows (environ)
 INSERT INTO `user` (`id`, `pseudo`, `email`, `roles`, `password`) VALUES
 	(1, '', 'test@test', '[]', '$2y$13$DeifcFPlbr50qKZh5iyW1Ol6IeNsTczthk74Ur.l5ngJvhWWws8bi'),
 	(3, 'admin', 'admin@admin.fr', '["ROLE_ADMIN"]', '$2y$13$aqLC4Hs3Uj9lbxuLHl6xoOHZiX5y2BqzOzUgcU06S8wMU4VbcEnXq'),
