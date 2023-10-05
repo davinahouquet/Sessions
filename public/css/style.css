@@ -234,6 +234,7 @@ p{
 @media (max-width : 900px){
     #icons{
         display: block;
+        text-align: right;
         color: var(--text-color-dark);
     }
     #icons:before{
@@ -262,6 +263,7 @@ p{
     nav.active ul{
         left: 0;
     }
+
     .bg-img{
         position: sticky;
         width: 350px;
@@ -272,12 +274,13 @@ p{
     .logo{
         width: 50px;
         height: 20;
-        position: absolute;
+        position: fixed;
         left: 60px;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
+
     }
     
     .logo p{
@@ -304,12 +307,28 @@ p{
 
     .bg-img{
         position: sticky;
-        width: 200px;
-        height: 210px;
+        width: 250px;
+        height: 230px;
         bottom: 0;
-        margin-left: 350px;
+        /* margin-left: 350px; */
     }
- 
+    .logo{
+        width: 25px;
+        height: 20;
+        position: fixed;
+        left: 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .logo p{
+        color: var(--text-color-dark);
+        font-weight: 600;
+        font-size: 8px;
+        margin-top: 10px;
+    }
 }
 
 /*---------------- PDF ----------------*/
